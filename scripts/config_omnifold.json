@@ -1,0 +1,16 @@
+{
+    'FILE_MC_RECO':'MC_vals_reco.npy',
+    'FILE_MC_GEN':'MC_vals_truth.npy',
+    'FILE_MC_FLAG_RECO':'MC_pass_reco.npy',
+    'FILE_MC_FLAG_GEN':'MC_pass_truth.npy',
+    'FILE_DATA_RECO':'data_vals_reco.npy',
+    'FILE_DATA_FLAG_RECO':'data_pass_reco.npy',
+    'NITER': 5,
+    'NTRIAL':1,
+    'LR': 1e-4,
+    'BATCH_SIZE': 50000,
+    'EPOCHS': 500,
+    'NWARMUP': 5,
+    'NAME':'aleph',
+    'NPATIENCE': 10,
+}
