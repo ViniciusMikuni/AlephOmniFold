@@ -1,4 +1,4 @@
-# Aleph Omhifold implementation
+# Aleph OmniFold implementation
 
 To run a single [OmniFold](https://dx.doi.org/10.1103/PhysRevLett.124.182001) iteration just run:
 
