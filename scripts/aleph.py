@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--config', default='config_omnifold.json', help='Basic config file containing general options')
 parser.add_argument('--plot_folder', default='../plots', help='Folder used to store plots')
-parser.add_argument('--file_path', default='/global/project/projectdirs/m3246/bnachman/LEP/aleph/processed', help='Folder containing input files')
+parser.add_argument('--file_path', default='/pscratch/sd/v/vmikuni/aleph', help='Folder containing input files')
 parser.add_argument('--nevts', type=float,default=-1, help='Dataset size to use during training')
 parser.add_argument('--verbose', action='store_true', default=False,help='Run the scripts with more verbose output')
 
@@ -35,8 +35,9 @@ opt = LoadJson(flags.config)
 if not os.path.exists(flags.plot_folder):
     os.makedirs(flags.plot_folder)
 
+
 data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
-#data=data[:data.shape[0]//2]
+
 if hvd.rank()==0:
     #Let's make a simple histogram of the feature we want to unfold
     feed_dict={
@@ -46,7 +47,7 @@ if hvd.rank()==0:
     }
     
     fig,ax = utils.HistRoutine(feed_dict,plot_ratio=True,
-                               binning=np.linspace(0,0.5,20),
+                               binning=utils.binning,
                                xlabel='1-T',logy=True,
                                ylabel='Normalized events',
                                reference_name='mc gen')

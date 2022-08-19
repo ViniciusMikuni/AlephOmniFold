@@ -8,7 +8,7 @@
     'NITER': 5,
     'NTRIAL':1,
     'LR': 1e-4,
-    'BATCH_SIZE': 50000,
+    'BATCH_SIZE': 5000,
     'EPOCHS': 500,
     'NWARMUP': 5,
     'NAME':'aleph',

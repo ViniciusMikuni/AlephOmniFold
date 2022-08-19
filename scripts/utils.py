@@ -20,8 +20,11 @@ colors = {
     'data reco':'black',
     'mc gen':'#7570b3',
     'mc reco':'#d95f02',
-}   
+}
 
+#binning=np.linspace(-4,4,50)
+binning=np.linspace(0,0.5,20)
+            
 def FormatFig(xlabel,ylabel,ax0):
     #Limit number of digits in ticks
     # y_loc, _ = plt.yticks()
@@ -72,6 +75,35 @@ def SetGrid(ratio=True):
         gs = gridspec.GridSpec(1, 1)
     return fig,gs
 
+def Generator(nevts,ndim,mean=0,std=1):
+    return np.random.normal(size=(nevts,ndim),loc=ndim*[mean],scale=ndim*[std])
+
+
+def Detector(sample,bias=0,std=0.5):
+    '''Assume a simple gaussian smearing for detector effect'''
+    #Make a hole in the detector
+    xmin=ymin=0.7
+    xmax=ymax=1.2
+
+    # xmin=0.7
+    # ymin=-10
+    # xmax= 10
+    # ymax=10
+
+
+    mask_x = (sample[:,0] > xmin) & (sample[:,0] < xmax)
+    # mask_y = (sample[:,1] > ymin) & (sample[:,1] < ymax)
+    mask = (mask_x)
+    smeared = std*np.random.normal(size=sample.shape) + sample
+    # smeared[mask==1] = -10    
+    return smeared
+
+    # mask_x = (smeared[:,0] > xmin) & (smeared[:,0] < xmax)
+    # mask_y = (smeared[:,1] > ymin) & (smeared[:,1] < ymax)
+    # mask = (mask_x) & (mask_y)
+    # smeared[mask==1] = -10
+    # return smeared
+
 
 def DataLoader(base_path,config,nevts=-1):
     hvd.init()
@@ -81,9 +113,12 @@ def DataLoader(base_path,config,nevts=-1):
     #We only want data events passing a selection criteria
     data = np.expand_dims(data[data_mask],-1)
     mc_reco = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_RECO']))[hvd.rank():nevts:hvd.size()],-1)
+
     mc_gen = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_GEN']))[hvd.rank():nevts:hvd.size()],-1)
     reco_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]==1
     gen_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN']))[hvd.rank():nevts:hvd.size()]==1
+    # mc_reco[reco_mask==0]=-10
+    # mc_gen[gen_mask==0]=-10
     return data, mc_reco,mc_gen,reco_mask,gen_mask
 
 def Plot_2D(sample,name,use_hist=True,weights=None):

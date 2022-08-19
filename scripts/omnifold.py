@@ -69,15 +69,14 @@ class Multifold():
         )
         
 
-        new_weights=self.reweight(self.mc_reco,self.model1)            
+        new_weights=self.reweight(self.mc_reco,self.model1)
+        #print(new_weights)
         new_weights[self.not_pass_reco]=1.0
         self.weights_pull = self.weights_push *new_weights
-        # self.weights_pull = self.weights_pull/np.average(self.weights_pull)
-        
         if self.verbose:            
             print("Plotting the results after step 1")
             weight_dict = {
-                'mc reco':self.weights_pull*self.weights_push*self.weights_mc,
+                'mc reco':self.weights_pull*self.weights_mc,
                 'data reco': self.weights_data,
             }
 
@@ -88,12 +87,11 @@ class Multifold():
 
             fig,ax = utils.HistRoutine(feed_dict,plot_ratio=True,
                                        weights = weight_dict,
-                                       binning=np.linspace(0,0.5,20),
+                                       binning=utils.binning,
                                        xlabel='1-T',logy=True,
                                        ylabel='Normalized events',
                                        reference_name='data reco')
-            fig.savefig('{}/{}.pdf'.format("../plots","Unfolded_Hist_T_step1_{}".format(i)))
-            input()
+            fig.savefig('../plots/Unfolded_Hist_T_step1_{}_{}.pdf'.format(i,self.opt['NAME']))
         
 
     def RunStep2(self,i):
@@ -111,7 +109,7 @@ class Multifold():
         new_weights=self.reweight(self.mc_gen,self.model2)
         new_weights[self.not_pass_gen]=1.0
         self.weights_push = new_weights
-        # self.weights_push = self.weights_push/np.average(self.weights_push)
+        self.weights_push = self.weights_push/np.average(self.weights_push)
 
 
 
@@ -138,7 +136,7 @@ class Multifold():
             # hvd.callbacks.LearningRateWarmupCallback(
             #     initial_lr=self.hvd_lr, warmup_epochs=self.opt['NWARMUP'],
             #     verbose=verbose),
-            ReduceLROnPlateau(patience=8, min_lr=1e-7,verbose=verbose),
+            # ReduceLROnPlateau(patience=8, min_lr=1e-7,verbose=verbose),
             EarlyStopping(patience=self.opt['NPATIENCE'],restore_best_weights=True)
         ]
         
@@ -194,15 +192,13 @@ class Multifold():
             self.weights_data = np.ones(self.data.shape[0])
         else:
             self.weights_data =weights_data
-
-        #Normalize MC weights to match the um of data weights
-        # self.weights_mc = self.weights_mc/np.sum(self.weights_mc[self.not_pass_reco==0])
-        # self.weights_mc *= 1.0*self.weights_data.shape[0]
-
-
+            
+        #Normalize MC weights to match the sum of data weights
+        self.weights_mc = self.weights_mc/np.sum(self.weights_mc[self.not_pass_reco==0])
+        self.weights_mc *= 1.0*self.weights_data.shape[0]
     def CompileModel(self,lr,model):
         self.hvd_lr = lr*np.sqrt(hvd.size())
-        opt = tensorflow.keras.optimizers.Adam(learning_rate=self.hvd_lr)
+        opt = tensorflow.keras.optimizers.Adadelta(learning_rate=self.hvd_lr)
         opt = hvd.DistributedOptimizer(opt)
 
         model.compile(loss=weighted_binary_crossentropy,
@@ -215,7 +211,7 @@ class Multifold():
         self.labels_gen = np.ones(len(self.mc_gen))
 
 
-    def PrepareModel(self,nvars): 
+    def PrepareModel(self,nvars):
         inputs1,outputs1 = MLP(nvars)
         inputs2,outputs2 = MLP(nvars)
                                    
@@ -224,8 +220,8 @@ class Multifold():
 
 
     def GetNtrainNtest(self,nevts):
-        NTRAIN=int(0.8*nevts/hvd.size())
-        NTEST=int(0.2*nevts/hvd.size())                        
+        NTRAIN=int(0.8*nevts)
+        NTEST=int(0.2*nevts)                        
         return NTRAIN,NTEST
 
     def reweight(self,events,model):
@@ -244,8 +240,8 @@ class Multifold():
 def MLP(nvars):
     ''' Define a simple fully conneted model to be used during unfolding'''
     inputs = Input((nvars, ))
-    layer = Dense(16,activation='relu')(inputs)
-    layer = Dense(32,activation='relu')(layer)
+    layer = Dense(8,activation='selu')(inputs)
+    layer = Dense(16,activation='selu')(layer)
     outputs = Dense(1,activation='sigmoid')(layer)
     return inputs,outputs
 
