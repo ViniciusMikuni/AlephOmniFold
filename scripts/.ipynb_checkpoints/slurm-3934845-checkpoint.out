@@ -1,0 +1,34 @@
+MPICH ERROR [Rank 0] [job id 3934845.3] [Wed Dec  7 16:04:54 2022] [nid001644] - Abort(1616271) (rank 0 in comm 0): Fatal error in PMPI_Init_thread: Other MPI error, error stack:
+MPIR_Init_thread(171).......: 
+MPID_Init(495)..............: 
+MPIDI_OFI_mpi_init_hook(816): 
+create_endpoint(1353).......: OFI EP enable failed (ofi_init.c:1353:create_endpoint:Address already in use)
+
+aborting job:
+Fatal error in PMPI_Init_thread: Other MPI error, error stack:
+MPIR_Init_thread(171).......: 
+MPID_Init(495)..............: 
+MPIDI_OFI_mpi_init_hook(816): 
+create_endpoint(1353).......: OFI EP enable failed (ofi_init.c:1353:create_endpoint:Address already in use)
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+usage: aleph.py [-h] [--config CONFIG] [--plot_folder PLOT_FOLDER]
+                [--file_path FILE_PATH] [--nevts NEVTS] [--verbose]
+aleph.py: error: unrecognized arguments: --run_id=0
+terminate called after throwing an instance of 'std::system_error'
+  what():  Resource deadlock avoided
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+usage: aleph.py [-h] [--config CONFIG] [--plot_folder PLOT_FOLDER]
+                [--file_path FILE_PATH] [--nevts NEVTS] [--verbose]
+aleph.py: error: unrecognized arguments: --run_id=2
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+usage: aleph.py [-h] [--config CONFIG] [--plot_folder PLOT_FOLDER]
+                [--file_path FILE_PATH] [--nevts NEVTS] [--verbose]
+aleph.py: error: unrecognized arguments: --run_id=3
+srun: error: nid001644: task 0: Aborted
+srun: launch/slurm: _step_signal: Terminating StepId=3934845.3
+srun: error: nid001644: task 0: Exited with exit code 2
+srun: launch/slurm: _step_signal: Terminating StepId=3934845.2
+srun: error: nid001644: task 0: Exited with exit code 2
+srun: launch/slurm: _step_signal: Terminating StepId=3934845.0
+srun: error: nid001644: task 0: Exited with exit code 2
+srun: launch/slurm: _step_signal: Terminating StepId=3934845.1

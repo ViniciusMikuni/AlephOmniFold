@@ -1,0 +1,36 @@
+srun: Warning: can't run 1 processes on 4 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 4 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 4 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 4 nodes, setting nnodes to 1
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+/global/u1/m/mavaylon/phys/OmniFold/scripts/utils.py:66: FutureWarning: ``set_style`` is deprecated: Naming convention is changing to match mpl. Use ``mplhep.style.use()``.
+  hep.set_style(hep.style.CMS)
+usage: aleph.py [-h] [--config CONFIG] [--plot_folder PLOT_FOLDER]
+                [--file_path FILE_PATH] [--nevts NEVTS] [--verbose]
+aleph.py: error: unrecognized arguments: --run_id=1
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+/global/u1/m/mavaylon/phys/OmniFold/scripts/utils.py:66: FutureWarning: ``set_style`` is deprecated: Naming convention is changing to match mpl. Use ``mplhep.style.use()``.
+  hep.set_style(hep.style.CMS)
+usage: aleph.py [-h] [--config CONFIG] [--plot_folder PLOT_FOLDER]
+                [--file_path FILE_PATH] [--nevts NEVTS] [--verbose]
+aleph.py: error: unrecognized arguments: --run_id=0
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+/global/u1/m/mavaylon/phys/OmniFold/scripts/utils.py:66: FutureWarning: ``set_style`` is deprecated: Naming convention is changing to match mpl. Use ``mplhep.style.use()``.
+  hep.set_style(hep.style.CMS)
+usage: aleph.py [-h] [--config CONFIG] [--plot_folder PLOT_FOLDER]
+                [--file_path FILE_PATH] [--nevts NEVTS] [--verbose]
+aleph.py: error: unrecognized arguments: --run_id=3
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+/global/u1/m/mavaylon/phys/OmniFold/scripts/utils.py:66: FutureWarning: ``set_style`` is deprecated: Naming convention is changing to match mpl. Use ``mplhep.style.use()``.
+  hep.set_style(hep.style.CMS)
+usage: aleph.py [-h] [--config CONFIG] [--plot_folder PLOT_FOLDER]
+                [--file_path FILE_PATH] [--nevts NEVTS] [--verbose]
+aleph.py: error: unrecognized arguments: --run_id=2
+srun: error: nid003624: task 0: Exited with exit code 2
+srun: launch/slurm: _step_signal: Terminating StepId=3934716.3
+srun: error: nid003608: task 0: Exited with exit code 2
+srun: launch/slurm: _step_signal: Terminating StepId=3934716.0
+srun: error: nid003621: task 0: Exited with exit code 2
+srun: launch/slurm: _step_signal: Terminating StepId=3934716.2
+srun: error: nid003609: task 0: Exited with exit code 2
+srun: launch/slurm: _step_signal: Terminating StepId=3934716.1
