@@ -247,6 +247,6 @@ def MLP(nvars,nemsemb=10):
         outputs = Dense(1,activation='sigmoid')(layer)
         net_trials.append(outputs)
 
-    outputs = tf.reduce_mean(outputs,0)
+    outputs = tf.reduce_mean(net_trials,0)
     return inputs,outputs
 
