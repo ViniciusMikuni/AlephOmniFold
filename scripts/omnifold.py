@@ -237,11 +237,16 @@ class Multifold():
 
 
 
-def MLP(nvars):
+def MLP(nvars,nemsemb=10):
     ''' Define a simple fully conneted model to be used during unfolding'''
     inputs = Input((nvars, ))
-    layer = Dense(8,activation='selu')(inputs)
-    layer = Dense(16,activation='selu')(layer)
-    outputs = Dense(1,activation='sigmoid')(layer)
+    net_trials=[]
+    for _ in range(NTRIALS):
+        layer = Dense(8,activation='selu')(inputs)
+        layer = Dense(16,activation='selu')(layer)
+        outputs = Dense(1,activation='sigmoid')(layer)
+        net_trials.append(outputs)
+
+    outputs = tf.reduce_mean(outputs,0)
     return inputs,outputs
 
