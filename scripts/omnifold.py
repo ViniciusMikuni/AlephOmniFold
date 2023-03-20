@@ -30,13 +30,14 @@ def LoadJson(file_name):
 
 
 class Multifold():
-    def __init__(self,version,config_file='config_omnifold.json',verbose=False):
+    def __init__(self,version,strapn=0,config_file='config_omnifold.json',verbose=False):
         self.opt = LoadJson(config_file)
         self.niter = self.opt['NITER']
         self.version=version
         self.mc_gen = None
         self.mc_reco = None
         self.data=None
+        self.strapn = strapn
         self.verbose=verbose
                 
         self.weights_folder = '../weights'
@@ -188,10 +189,16 @@ class Multifold():
             self.weights_mc = weights_mc
 
         if weights_data is None:
-            if self.verbose: print("No data weights provided, making one filled with 1s")
-            self.weights_data = np.ones(self.data.shape[0])
+            if self.strapn>0:
+                if self.verbose: print("Running bootstrap with ID {}".format(self.strapn))
+                np.random.seed(self.strapn)
+                self.weights_data = np.random.poisson(1,self.data.shape[0])
+            else:
+                if self.verbose: print("No data weights provided, making one filled with 1s")
+                self.weights_data = np.ones(self.data.shape[0])
         else:
             self.weights_data =weights_data
+            
             
         #Normalize MC weights to match the sum of data weights
         self.weights_mc = self.weights_mc/np.sum(self.weights_mc[self.not_pass_reco==0])
@@ -241,7 +248,7 @@ def MLP(nvars,nemsemb=10):
     ''' Define a simple fully conneted model to be used during unfolding'''
     inputs = Input((nvars, ))
     net_trials=[]
-    for _ in range(NTRIALS):
+    for _ in range(nemsemb):
         layer = Dense(8,activation='selu')(inputs)
         layer = Dense(16,activation='selu')(layer)
         outputs = Dense(1,activation='sigmoid')(layer)

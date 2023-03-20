@@ -25,6 +25,7 @@ parser.add_argument('--config', default='config_omnifold.json', help='Basic conf
 parser.add_argument('--plot_folder', default='../plots', help='Folder used to store plots')
 parser.add_argument('--file_path', default='/global/cfs/cdirs/m3246/bnachman/LEP/aleph/processed/', help='Folder containing input files')
 parser.add_argument('--nevts', type=float,default=-1, help='Dataset size to use during training')
+parser.add_argument('--strapn', type=int,default=0, help='Index of the bootstrap to run. 0 means no bootstrap')
 parser.add_argument('--verbose', action='store_true', default=False,help='Run the scripts with more verbose output')
 
 
@@ -56,7 +57,8 @@ if hvd.rank()==0:
 
 for itrial in range(opt['NTRIAL']):
     K.clear_session()
-    mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrial),verbose=flags.verbose)
+    mfold = Multifold(version='{}_trial{}_strapn{}'.format(opt['NAME'],itrial,flags.strapn),
+                      strapn=flags.strapn,verbose=flags.verbose)
     mfold.mc_gen = mc_gen
     mfold.mc_reco =mc_reco
     mfold.data = data

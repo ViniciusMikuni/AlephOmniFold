@@ -15,6 +15,7 @@ parser.add_argument('--config', default='config_omnifold.json', help='Basic conf
 parser.add_argument('--plot_folder', default='../plots', help='Folder used to store plots')
 parser.add_argument('--file_path', default='/global/cfs/cdirs/m3246/bnachman/LEP/aleph/processed', help='Folder containing input files')
 parser.add_argument('--nevts', type=float,default=-1, help='Dataset size to use during training')
+parser.add_argument('--strapn', type=int,default=0, help='Index of the bootstrap to run. 0 means no bootstrap')
 parser.add_argument('--verbose', action='store_true', default=False,help='Run the scripts with more verbose output')
 
 flags = parser.parse_args()
@@ -24,7 +25,8 @@ opt = LoadJson(flags.config)
 data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
 
 for itrial in range(opt['NTRIAL']):
-    mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrial),verbose=flags.verbose)
+    mfold = Multifold(version='{}_trial{}_strapn{}'.format(opt['NAME'],itrial,flags.strapn),
+                      verbose=flags.verbose)
     mfold.PrepareModel(nvars=data.shape[1])
     mfold.LoadModel(iteration=opt['NITER']-1)
     omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2)
