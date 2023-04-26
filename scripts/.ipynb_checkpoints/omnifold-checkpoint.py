@@ -10,6 +10,8 @@ import horovod.tensorflow.keras as hvd
 import json, yaml
 import utils
 from datetime import datetime
+import keras_tuner
+from keras_tuner.tuners import RandomSearch
 
 
 
@@ -30,9 +32,13 @@ def LoadJson(file_name):
 
 
 class Multifold():
-    def __init__(self,version,config_file='config_omnifold.json',verbose=False, run_id=0):
+    def __init__(self,version,config_file='config_omnifold.json',verbose=False, run_id=0, tune=False):
         self.opt = LoadJson(config_file)
-        self.niter = self.opt['NITER']
+        if tune:
+            self.niter = 1
+            self.hp = keras_tuner.HyperParameters()
+        else:
+            self.niter = self.opt['NITER']
         self.version=version
         self.mc_gen = None
         self.mc_reco = None
@@ -46,7 +52,7 @@ class Multifold():
         self.BATCH_SIZE=self.opt['BATCH_SIZE']
         self.EPOCHS=self.opt['EPOCHS']
         
-        self.weights_folder = '../weights'
+        self.weights_folder = '/global/homes/m/mavaylon/phys/OmniFold/weights'
         if not os.path.exists(self.weights_folder):
             os.makedirs(self.weights_folder)
             
@@ -60,10 +66,18 @@ class Multifold():
         
         for i in range(self.niter):
             print("ITERATION: {}".format(i + 1))
-            self.CompileModel(float(self.opt['LR']),self.model1)
-            self.RunStep1(i)
-            self.CompileModel(float(self.opt['LR']),self.model2)
-            self.RunStep2(i)
+            if self.niter==1:
+                model=self.CompileModel(float(self.opt['LR']),self.model1),
+                self.TuneModel(np.concatenate((self.mc_reco, self.data)),
+                               np.concatenate((self.labels_mc, self.labels_data)),
+                               np.concatenate((self.weights_push*self.weights_mc,self.weights_data)),
+                               i,model=model,stepn=1,)
+                continue
+            else:
+                self.CompileModel(float(self.opt['LR']),self.model1)
+                self.RunStep1(i)
+                self.CompileModel(float(self.opt['LR']),self.model2)
+                self.RunStep2(i)
                 
     def RunStep1(self,i):
         '''Data versus reco MC reweighting'''
@@ -118,13 +132,51 @@ class Multifold():
         self.weights_push = new_weights
         self.weights_push = self.weights_push/np.average(self.weights_push)
 
+    def TuneModel(self,sample,labels,weights,iteration,model,stepn):
+        self.BATCH_SIZE=self.opt['BATCH_SIZE']
+        self.EPOCHS=self.opt['EPOCHS']
+        tuner = RandomSearch(
+            model,
+            objective='weighted_binary_crossentropy',
+            max_trials=50,
+            executions_per_trial=1)
+        mask = sample[:,0]!=-10
+        # print(weights)
+        # input()
+        data = tf.data.Dataset.from_tensor_slices((
+            sample[mask],
+            np.stack((labels[mask],weights[mask]),axis=1))
+        ).cache().shuffle(np.sum(mask))
 
+        #Fix same number of training events between ranks
+        NTRAIN,NTEST = self.GetNtrainNtest(np.sum(mask))
+        test_data = data.take(NTEST).repeat().batch(self.BATCH_SIZE)
+        train_data = data.skip(NTEST).repeat().batch(self.BATCH_SIZE)
+        
+        tuner.search(train_data, max_trials=50, executions_per_trial=1)
+        
+        return tuner.get_best_hyperparameters()
+    
+    def PrepareData(self,sample,labels,weights):
+        self.BATCH_SIZE=self.opt['BATCH_SIZE']
+        self.EPOCHS=self.opt['EPOCHS']
+        mask = sample[:,0]!=-10
+       
+        data = tf.data.Dataset.from_tensor_slices((
+            sample[mask],
+            np.stack((labels[mask],weights[mask]),axis=1))
+        ).cache().shuffle(np.sum(mask))
+
+        #Fix same number of training events between ranks
+        NTRAIN,NTEST = self.GetNtrainNtest(np.sum(mask))
+        test_data = data.take(NTEST).repeat().batch(self.BATCH_SIZE)
+        train_data = data.skip(NTEST).repeat().batch(self.BATCH_SIZE)
+        return NTRAIN, NTEST, train_data, test_data
 
     def RunModel(self,sample,labels,weights,iteration,model,stepn):
         
         mask = sample[:,0]!=-10
-        # print(weights)
-        # input()
+       
         data = tf.data.Dataset.from_tensor_slices((
             sample[mask],
             np.stack((labels[mask],weights[mask]),axis=1))
@@ -162,9 +214,7 @@ class Multifold():
             validation_steps=int(NTEST/self.BATCH_SIZE),
             verbose=verbose,
             callbacks=callbacks)
-
-
-
+        
 
     def Preprocessing(self,weights_mc=None,weights_data=None,pass_reco=None,pass_gen=None):
         self.PrepareWeights(weights_mc,weights_data,pass_reco,pass_gen)
@@ -205,7 +255,7 @@ class Multifold():
         self.weights_mc *= 1.0*self.weights_data.shape[0]
     def CompileModel(self,lr,model):
         self.hvd_lr = lr*np.sqrt(hvd.size())
-        opt = tensorflow.keras.optimizers.Adadelta(learning_rate=self.hvd_lr)
+        opt = tf.keras.optimizers.Adadelta(learning_rate=self.hvd_lr)
         opt = hvd.DistributedOptimizer(opt)
 
         model.compile(loss=weighted_binary_crossentropy,
@@ -219,8 +269,9 @@ class Multifold():
 
 
     def PrepareModel(self,nvars):
+        # inputs1,outputs1 = MLP_Tune(nvars,self.hp)
         inputs1,outputs1 = MLP(nvars)
-        inputs2,outputs2 = MLP(nvars)
+        inputs2,outputs2 = MLP2(nvars)
                                    
         self.model1 = Model(inputs=inputs1, outputs=outputs1)
         self.model2 = Model(inputs=inputs2, outputs=outputs2)
@@ -243,14 +294,48 @@ class Multifold():
         model_name = '{}/{}_iter{}_step2.h5'.format(
             weights_folder_path,self.version,iteration)
         self.model2.load_weights(model_name)
+    
+    # def build_MLP_Tune(self,hp): #tune
+    #     ''' Define a simple fully conneted model to be used during unfolding'''
+    #     model=tf.keras.Sequential()
+    #     model.add(Input((self.mc_gen.shape[1], )))
+    #     for i in range(hp.Int('num_layers', 2, 4)):
+    #         model.add(Dense(units=hp.Int('units_' + str(i),
+    #                                         min_value=4,
+    #                                         max_value=32,
+    #                                         step=4),
+    #                                activation=hp.Choice("activation", ["relu", "selu"])))
+    #     model.add(Dense(1,activation='sigmoid'))
+    #     return model
 
 
 
 def MLP(nvars):
     ''' Define a simple fully conneted model to be used during unfolding'''
     inputs = Input((nvars, ))
+    layer = Dense(4,activation='relu')(inputs)
+    layer = Dense(4,activation='relu')(layer)
+    layer = Dense(4,activation='relu')(layer)
+    outputs = Dense(1,activation='sigmoid')(layer)
+    return inputs,outputs
+
+def MLP2(nvars):
+    inputs = Input((nvars, ))
     layer = Dense(8,activation='selu')(inputs)
     layer = Dense(16,activation='selu')(layer)
     outputs = Dense(1,activation='sigmoid')(layer)
     return inputs,outputs
+
+# def MLP(nvars,nensemb=10):
+#     ''' Define a simple fully conneted model to be used during unfolding'''
+#     inputs = Input((nvars, ))
+#     net_trials=[]
+#     for _ in range(nensemb):
+#         layer = Dense(8,activation='selu')(inputs)
+#         layer = Dense(16,activation='selu')(layer)
+#         outputs = Dense(1,activation='sigmoid')(layer)
+#         net_trials.append(outputs)
+
+#     outputs = tf.reduce_mean(net_trials,0)
+#     return inputs,outputs
 

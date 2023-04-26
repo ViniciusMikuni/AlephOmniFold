@@ -270,7 +270,7 @@ class Multifold():
 
     def PrepareModel(self,nvars):
         # inputs1,outputs1 = MLP_Tune(nvars,self.hp)
-        inputs1,outputs1 = MLP(nvars)
+        inputs1,outputs1 = MLP2(nvars)
         inputs2,outputs2 = MLP2(nvars)
                                    
         self.model1 = Model(inputs=inputs1, outputs=outputs1)

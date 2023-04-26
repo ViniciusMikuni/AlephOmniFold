@@ -1,0 +1,1315 @@
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.0
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.1
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.2
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.3
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.4
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.5
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.6
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.7
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.8
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.9
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.10
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.11
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.12
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.13
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.14
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.15
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.16
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.17
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.18
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.19
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.20
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.21
+srun: Job 5690530 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 5690530
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.22
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.23
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.24
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.25
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.26
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.27
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.28
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.29
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.30
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.31
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.32
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.33
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.34
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.35
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.36
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.37
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.38
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.39
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.40
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.41
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.42
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.43
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.44
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.45
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.46
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.47
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.48
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.49
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.50
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.51
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.52
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.53
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.54
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.55
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.56
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.57
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.58
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.59
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.60
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.61
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.62
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.63
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.64
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.65
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.66
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.67
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.68
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.69
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.70
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.71
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.72
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.73
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.74
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.75
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.76
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.77
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.78
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.79
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.80
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.81
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.82
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.83
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.84
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.85
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.86
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.87
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.88
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.89
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.90
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.91
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.92
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.93
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.94
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.95
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.96
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.97
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.98
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.99
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Traceback (most recent call last):
+  File "/global/homes/m/mavaylon/phys/OmniFold/scripts/aleph.py", line 69, in <module>
+    mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 172, in Preprocessing
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 222, in PrepareModel
+    inputs1,outputs1 = MLP(nvars)
+  File "/global/u1/m/mavaylon/phys/OmniFold/scripts/omnifold.py", line 261, in MLP
+    for _ in range(NTRIALS):
+NameError: name 'NTRIALS' is not defined
+srun: error: nid001412: task 0: Exited with exit code 1
+srun: launch/slurm: _step_signal: Terminating StepId=5690530.100

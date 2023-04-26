@@ -219,28 +219,46 @@ def HistRoutine(feed_dict,xlabel='',ylabel='',reference_name='Geant4',logy=False
     return fig,ax0
 
 
-def SD_Plot(feed_dict,xlabel='',ylabel='',reference_name='Geant4',logy=False,binning=None,label_loc='best',weights=None,uncertainty=None, sub=False, density=True):
+def SD_Plot(feed_dict,xlabel='',ylabel='',reference_name='Geant4',logy=False,binning=None,label_loc='best',weights=None,uncertainty=None, sub=False, density=True, show_data=True, est_uncertainty=False):
     # assert reference_name in feed_dict.keys(), "ERROR: Don't know the reference distribution"
     
     fig,gs = SetGrid() 
     ax0 = plt.subplot(gs[0])
-    
+    # ax0.margins(x=0, y=0.05)
+    ax0.set_xlim([0,.35])
+    ax0.set_ylim([0,.05])
+
     if binning is None:
         binning = np.linspace(np.quantile(feed_dict[reference_name],0.0),np.quantile(feed_dict[reference_name],1),10)
-    if density:
-        dist,edge,_=ax0.hist(feed_dict[reference_name],bins=binning,label=reference_name, density=True,histtype="step")
-        bin_centres = (edge[:-1] + edge[1:]) / 2
+    
+    if show_data:
+        if density:
+            dist,edge,_=ax0.hist(feed_dict[reference_name],bins=binning,label=reference_name, density=True,histtype="step")
+            bin_centres = (edge[:-1] + edge[1:]) / 2
+        else:
+            dist,edge,_=ax0.hist(feed_dict[reference_name],bins=binning,label=reference_name, density=False,histtype="step")
+            bin_centres = (edge[:-1] + edge[1:]) / 2
     else:
-        dist,edge,_=ax0.hist(feed_dict[reference_name],bins=binning,label=reference_name, density=False,histtype="step")
+        output_data, edge = np.histogram(feed_dict[reference_name],bins=binning, density=True)
         bin_centres = (edge[:-1] + edge[1:]) / 2
+        
         
     if not sub:
-        plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Coeff_of_Var")
-    else: 
-        plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Coeff_of_Var")
-        plt.plot(bin_centres,feed_dict['sub_sd_over_mean'],'*', label="Sub_Coeff_of_Var")
+        plt.plot(bin_centres,feed_dict['sd_over_mean_40'],'o', label="Ensembl_40")
+        plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Ensembl_20")
+        plt.plot(bin_centres,feed_dict['sd_over_mean_10'],'o', label="Ensembl_10")
+    else:
+        plt.plot(bin_centres,feed_dict['sd_over_mean_40'],'o', label="Ensembl_40")
+        plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Ensembl_20")
+        plt.plot(bin_centres,feed_dict['sd_over_mean_10'],'o', label="Ensembl_10")
+        plt.plot(bin_centres,feed_dict['sub_sd_over_mean_40'],'o', label="Sub_40")
+        plt.plot(bin_centres,feed_dict['sub_sd_over_mean'],'o', label="Sub_20")
+        plt.plot(bin_centres,feed_dict['sub_sd_over_mean_10'],'o', label="Sub_10")
         
-    
+    if est_uncertainty:
+        plt.plot(bin_centres,feed_dict['est_sim_unc'],'*', label="est_sim_unc")
+        plt.plot(bin_centres,feed_dict['est_real_unc'],'*', label="est_real_unc")
+        
     if logy:
         ax0.set_yscale('log')
 

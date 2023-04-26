@@ -5,7 +5,9 @@ import os
 import horovod.tensorflow.keras as hvd
 import tensorflow as tf
 import utils
-from omnifold import  Multifold,LoadJson
+# from omnifold import  Multifold,LoadJson
+from omnifold_mlp_old import  Multifold,LoadJson
+
 import tensorflow.keras.backend as K
 
 utils.SetStyle()
@@ -60,7 +62,7 @@ if hvd.rank()==0:
 
 for itrial in range(opt['NTRIAL']):
     K.clear_session()
-    mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrial),verbose=flags.verbose, run_id=flags.run_id)
+    mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrial),verbose=flags.verbose, run_id=flags.run_id,tune=False)
     mfold.mc_gen = mc_gen
     mfold.mc_reco =mc_reco
     mfold.data = data
