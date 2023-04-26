@@ -61,10 +61,19 @@ for itrial in range(opt['NTRIAL']):
     K.clear_session()
     mfold = Multifold(version='{}_trial{}_strapn{}'.format(opt['NAME'],itrial,flags.strapn),
                       strapn=flags.strapn,verbose=flags.verbose,run_id=flags.run_id)
-    mfold.mc_gen = mc_gen
-    mfold.mc_reco =mc_reco
-    mfold.data = data
+    mfold.mc_gen = mc_gen # the sim pre-detector
+    mfold.mc_reco =mc_reco # sim post-detector
+    mfold.data = data # experimental real data
 
     # tf.random.set_seed(itrial)
     mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+    """
+    Preprocessing goes as follows
+    self.PrepareWeights(weights_mc,weights_data,pass_reco,pass_gen)
+        We did not pass weights_mc or weights_data
+        
+    self.PrepareInputs()
+    self.PrepareModel(nvars = self.mc_gen.shape[1])
+    
+    """
     mfold.Unfold()

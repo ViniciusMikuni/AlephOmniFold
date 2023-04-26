@@ -40,12 +40,14 @@ class Multifold():
         self.strapn = strapn
         self.verbose=verbose
         self.run_id = run_id
+        self.random_training_seed = np.random.randint(1e4,size=1)[0]
                 
         self.weights_folder = '../weights'
         if not os.path.exists(self.weights_folder):
             os.makedirs(self.weights_folder)
             
     def Unfold(self):
+        np.random.seed(self.random_training_seed)
         self.BATCH_SIZE=self.opt['BATCH_SIZE']
         self.EPOCHS=self.opt['EPOCHS']
         
@@ -106,9 +108,9 @@ class Multifold():
         print("RUNNING STEP 2")
             
         self.RunModel(
-            np.concatenate((self.mc_gen, self.mc_gen)),
-            np.concatenate((self.labels_mc, self.labels_gen)),
-            np.concatenate((self.weights_mc, self.weights_mc*self.weights_pull)),
+            np.concatenate((self.mc_gen, self.mc_gen)), # sample
+            np.concatenate((self.labels_mc, self.labels_gen)), # labels
+            np.concatenate((self.weights_mc, self.weights_mc*self.weights_pull)), # weights
             i,self.model2,stepn=2,
         )
 
@@ -219,9 +221,9 @@ class Multifold():
 
 
     def PrepareInputs(self):
-        self.labels_mc = np.zeros(len(self.mc_reco))
-        self.labels_data = np.ones(len(self.data))
-        self.labels_gen = np.ones(len(self.mc_gen))
+        self.labels_mc = np.zeros(len(self.mc_reco)) # labels for sim post-det
+        self.labels_data = np.ones(len(self.data)) # labels for data
+        self.labels_gen = np.ones(len(self.mc_gen)) # labels for sim pre-det
 
 
     def PrepareModel(self,nvars):
