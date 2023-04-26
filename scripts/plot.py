@@ -28,7 +28,7 @@ for itrial in range(opt['NTRIAL']):
     mfold = Multifold(version='{}_trial{}_strapn{}'.format(opt['NAME'],itrial,flags.strapn),
                       verbose=flags.verbose)
     mfold.PrepareModel(nvars=data.shape[1])
-    mfold.LoadModel(iteration=opt['NITER']-1)
+    mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path='/pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/weights_strapn_1/28032023_20:52:32_gpu_01',strapn='1')
     omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2)
     print(omnifold_weights)
     if itrial==0:
