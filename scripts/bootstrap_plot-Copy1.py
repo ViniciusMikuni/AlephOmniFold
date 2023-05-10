@@ -5,9 +5,7 @@ import random
 import os
 import tensorflow as tf
 import utils
-# from omnifold import  Multifold,LoadJson
-from omnifold_mlp_old import  Multifold as MF
-from omnifold import  Multifold,LoadJson
+from omnifold import Multifold,LoadJson
 
 import tensorflow.keras.backend as K
 from glob import glob
@@ -15,11 +13,11 @@ from tqdm import tqdm
 from pprint import pprint
 
 
-# utils.SetStyle()
+utils.SetStyle()
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--config', default='config_omnifold-Copy1.json', help='Basic config file containing general options')
+parser.add_argument('--config', default='config_omnifold.json', help='Basic config file containing general options')
 parser.add_argument('--plot_folder', default='../plots', help='Folder used to store plots')
 parser.add_argument('--file_path', default='/global/cfs/cdirs/m3246/bnachman/LEP/aleph/processed', help='Folder containing input files')
 parser.add_argument('--nevts', type=float, default=-1, help='Dataset size to use during training')
@@ -32,7 +30,7 @@ itrials=0
 
 data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
 
-weights_paths= glob('/pscratch/sd/m/mavaylon/weights_original_mlp/*')
+weights_paths= glob('/pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/redone_enemble_weights/*')
 
 #create sets of 40
 rem = len(weights_paths)%40
@@ -53,9 +51,9 @@ for group in tqdm(set_40):
     print('group: ', group)
     for session in tqdm(group):
         print('session: ', session)
-        mfold = MF(version='{}_trial{}'.format(opt['NAME'],itrials),verbose=flags.verbose)
+        mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrials),verbose=flags.verbose)
         mfold.PrepareModel(nvars=data.shape[1]) # sets the dims for the MLP model used and defines the 2 models (step 1 and 2)
-        mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session) # loads weights for model 2
+        mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=0) # loads weights for model 2
         omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
 
         feed_dict_data=1-mc_gen[gen_mask][:,0]
@@ -88,9 +86,9 @@ subset_40 = sets_of_40[1]
 sub_hist_sessions_data =[]
 sub_bins_=[]
 for session in subset_40:
-    mfold = MF(version='{}_trial{}'.format(opt['NAME'],itrials),verbose=flags.verbose)
+    mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrials),verbose=flags.verbose)
     mfold.PrepareModel(nvars=data.shape[1]) # sets the dims for the MLP model used and defines the 2 models (step 1 and 2)
-    mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session) # loads weights for model 2
+    mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=0) # loads weights for model 2
     omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
     
     feed_dict_data=1-mc_gen[gen_mask][:,0]
@@ -122,7 +120,7 @@ opt = LoadJson(flags.config)
 itrials=0
 
 data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
-boot_folders=['/pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/weights_strapn_'+str(i)+'/*' for i in range(1,11)]
+boot_folders=['/pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/boot_weights_first/weights_strapn_'+str(i)+'/*' for i in range(1,11)]
 
     
 boot_n = 1
@@ -142,16 +140,15 @@ for boot in boot_folders:
         # print(output_data)
         hist_sessions_data.append(output_data)
         bins_.append(bins)
-
+    # breakpoint()
     ave = np.mean(hist_sessions_data,axis=0)
     session_dict['group_'+str(boot_n)] = ave
     boot_n=boot_n+1
-
+# breakpoint()
 # calculate sd of the averages
 sd = np.std(list(session_dict.values()),axis=0)
 ave = np.mean(list(session_dict.values()),axis=0)
 sd_over_mean = sd/ave
-
 # estimate statistical uncertainty 
 sim_det_data = 1-mc_reco[reco_mask]
 output_sim_data, bins = np.histogram(sim_det_data, bins=utils.binning, density=False)

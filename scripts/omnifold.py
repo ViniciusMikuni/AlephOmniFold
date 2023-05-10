@@ -52,7 +52,7 @@ class Multifold():
         self.EPOCHS=self.opt['EPOCHS']
         
         date_time = datetime.now().strftime("%d%m%Y_%H:%M:%S")
-        self.saved_weights_folder = '../weights/'+date_time+'_gpu_'+str(self.run_id)+str(self.strapn)
+        self.saved_weights_folder = '../weights/'+date_time+'_gpu_'+str(self.run_id)+'_'+str(self.strapn)
         if not os.path.exists(self.saved_weights_folder):
             os.makedirs(self.saved_weights_folder)
         
