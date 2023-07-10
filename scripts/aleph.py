@@ -69,9 +69,7 @@ for itrial in range(opt['NTRIAL']):
     mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
     """
     Preprocessing goes as follows
-    self.PrepareWeights(weights_mc,weights_data,pass_reco,pass_gen)
-        We did not pass weights_mc or weights_data
-        
+    self.PrepareWeights(weights_mc,weights_data,pass_reco,pass_gen)        
     self.PrepareInputs()
     self.PrepareModel(nvars = self.mc_gen.shape[1])
     
