@@ -30,7 +30,7 @@ def LoadJson(file_name):
 
 
 class Multifold():
-    def __init__(self,version,strapn=0,config_file='config_omnifold.json',verbose=False, run_id=0):
+    def __init__(self,version,strapn=0,config_file='config_omnifold.json',verbose=False, run_id=0, boot=None):
         self.opt = LoadJson(config_file)
         self.niter = self.opt['NITER']
         self.version=version
@@ -41,6 +41,9 @@ class Multifold():
         self.verbose=verbose
         self.run_id = run_id
         self.random_training_seed = np.random.randint(1e4,size=1)[0]
+        self.boot = boot
+        if self.boot is not None:
+            print("Bootstrap set for " + self.boot)
                 
         self.weights_folder = '../weights'
         if not os.path.exists(self.weights_folder):
@@ -191,14 +194,19 @@ class Multifold():
 
         
         if weights_mc is None:
-            if self.verbose: print("No MC weights provided, making one filled with 1s")
+            if self.strapn>0 and self.boot=='mc':
+                if self.verbose: print("Running mc bootstrap with ID {}".format(self.strapn))
+                np.random.seed(self.strapn)
+                self.weights_mc = np.random.poisson(1,self.mc_reco.shape[0])
+            else:
+                if self.verbose: print("No MC weights provided, making one filled with 1s")
             self.weights_mc = np.ones(self.mc_reco.shape[0])
         else:
             self.weights_mc = weights_mc
 
         if weights_data is None:
-            if self.strapn>0:
-                if self.verbose: print("Running bootstrap with ID {}".format(self.strapn))
+            if self.strapn>0 and self.boot=='data':
+                if self.verbose: print("Running data bootstrap with ID {}".format(self.strapn))
                 np.random.seed(self.strapn)
                 self.weights_data = np.random.poisson(1,self.data.shape[0])
             else:

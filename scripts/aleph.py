@@ -39,7 +39,7 @@ if not os.path.exists(flags.plot_folder):
     os.makedirs(flags.plot_folder)
 
 
-data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
+data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts,half=True)
 
 if hvd.rank()==0:
     #Let's make a simple histogram of the feature we want to unfold
@@ -60,7 +60,7 @@ if hvd.rank()==0:
 for itrial in range(opt['NTRIAL']):
     K.clear_session()
     mfold = Multifold(version='{}_trial{}_strapn{}'.format(opt['NAME'],itrial,flags.strapn),
-                      strapn=flags.strapn,verbose=flags.verbose,run_id=flags.run_id)
+                      strapn=flags.strapn,verbose=flags.verbose,run_id=flags.run_id, boot='mc')
     mfold.mc_gen = mc_gen # the sim pre-detector
     mfold.mc_reco =mc_reco # sim post-detector
     mfold.data = data # experimental real data

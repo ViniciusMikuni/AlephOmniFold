@@ -5,6 +5,9 @@ import argparse
 import os
 import horovod.tensorflow.keras as hvd
 import tensorflow as tf
+import random
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
 
 line_style = {
@@ -105,21 +108,52 @@ def Detector(sample,bias=0,std=0.5):
     # return smeared
 
 
-def DataLoader(base_path,config,nevts=-1):
+def DataLoader(base_path,config,nevts=-1, half=False):
     hvd.init()
     if nevts==-1:nevts=None
     data = np.load(os.path.join(base_path,config['FILE_DATA_RECO']))[hvd.rank():nevts:hvd.size()]
     data_mask = np.load(os.path.join(base_path,config['FILE_DATA_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]
-    #We only want data events passing a selection criteria
-    data = np.expand_dims(data[data_mask],-1)
-    mc_reco = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_RECO']))[hvd.rank():nevts:hvd.size()],-1)
+    if half:
+        np.random.seed(2)
+        df=pd.DataFrame({'data':data*10})
+        df['data_mask']=data_mask
+        df['bin']=pd.cut(df['data'],10)
+        sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=.25))
+        data=sample['data'].values/10
+        data_mask=sample['data_mask'].values
+        
+        data = np.expand_dims(data[data_mask],-1)
+        
+        df=pd.DataFrame({'mc_reco': np.load(os.path.join(base_path,config['FILE_MC_RECO']))[hvd.rank():nevts:hvd.size()]*10})
+        df['reco_mask'] = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]==1
+        df['bin']=pd.cut(df['mc_reco'], 10)
+        sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=.25))
+        mc_reco=sample['mc_reco'].values/10
+        reco_mask=sample['reco_mask'].values
+        
+        df=pd.DataFrame({'mc_gen': np.load(os.path.join(base_path,config['FILE_MC_GEN']))[hvd.rank():nevts:hvd.size()]*10})
+        df['gen_mask'] = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN']))[hvd.rank():nevts:hvd.size()]==1
+        df['bin']=pd.cut(df['mc_gen'],10)
+        sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=.25))
+        sample=sample.sort_values(by='bin').iloc[:-1,:]
+        mc_gen=sample['mc_gen'].values/10
+        gen_mask=sample['gen_mask'].values
 
-    mc_gen = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_GEN']))[hvd.rank():nevts:hvd.size()],-1)
-    reco_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]==1
-    gen_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN']))[hvd.rank():nevts:hvd.size()]==1
-    # mc_reco[reco_mask==0]=-10
-    # mc_gen[gen_mask==0]=-10
-    return data, mc_reco,mc_gen,reco_mask,gen_mask
+        mc_reco = np.expand_dims(mc_reco,-1)
+        mc_gen = np.expand_dims(mc_gen,-1)
+        # breakpoint()
+        return data, mc_reco,mc_gen,reco_mask,gen_mask
+    else:  
+        #We only want data events passing a selection criteria
+        data = np.expand_dims(data[data_mask],-1)
+        mc_reco = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_RECO']))[hvd.rank():nevts:hvd.size()],-1)
+        mc_gen = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_GEN']))[hvd.rank():nevts:hvd.size()],-1)
+        reco_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]==1
+        gen_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN']))[hvd.rank():nevts:hvd.size()]==1
+        # mc_reco[reco_mask==0]=-10
+        # mc_gen[gen_mask==0]=-10
+
+        return data, mc_reco,mc_gen,reco_mask,gen_mask
 
 def Plot_2D(sample,name,use_hist=True,weights=None):
     #cmap = plt.get_cmap('PiYG')
@@ -232,6 +266,7 @@ def SD_Plot(feed_dict,xlabel='',ylabel='',reference_name='Geant4',logy=False,bin
 
     if binning is None:
         binning = np.linspace(np.quantile(feed_dict[reference_name],0.0),np.quantile(feed_dict[reference_name],1),10)
+        binning = np.linspace(np.quantile(data,0.0),np.quantile(data,1),10)
     
     if show_data:
         if density:
@@ -244,21 +279,22 @@ def SD_Plot(feed_dict,xlabel='',ylabel='',reference_name='Geant4',logy=False,bin
         output_data, edge = np.histogram(feed_dict[reference_name],bins=binning, density=True)
         bin_centres = (edge[:-1] + edge[1:]) / 2
         
-        
     if not sub:
-        plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Bootstrap n=10")
+        plt.plot(bin_centres,feed_dict['sd_over_mean_full'],'o', label="Bootstrap n=10")
     #     plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Ensembl_20")
     #     plt.plot(bin_centres,feed_dict['sd_over_mean_10'],'o', label="Ensembl_10")
     else:
-        plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Bootstrap n=10")
+        # plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Bootstrap n=10")
+        # plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_full'],yerr=feed_dict['sd_over_mean_full']/np.sqrt(10), fmt='o', label="Bootstrap Full n=10")
+        plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_full_40'],yerr=feed_dict['sd_over_mean_full_40']/np.sqrt(40), fmt='o', label="Bootstrap Data Full n=40")
+        plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_full_40_sim'],yerr=feed_dict['sd_over_mean_full_40_sim']/np.sqrt(40), fmt='o', label="Bootstrap Sim Full n=40")
+        # plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_quarter'],yerr=feed_dict['sd_over_mean_quarter']/np.sqrt(10), fmt='o', label="Bootstrap n=10 Quarter")
+
         plt.plot(bin_centres,feed_dict['sd_over_mean_40'],'o', label="Ensembl_40")
-    #     plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Ensembl_20")
-    #     plt.plot(bin_centres,feed_dict['sd_over_mean_10'],'o', label="Ensembl_10")
         plt.plot(bin_centres,feed_dict['sub_sd_over_mean_40'],'o', label="Sub_40")
-    #     plt.plot(bin_centres,feed_dict['sub_sd_over_mean'],'o', label="Sub_20")
-    #     plt.plot(bin_centres,feed_dict['sub_sd_over_mean_10'],'o', label="Sub_10")
         
     if est_uncertainty:
+        pass
         plt.plot(bin_centres,feed_dict['est_sim_unc'],'*', label="est_sim_unc")
         plt.plot(bin_centres,feed_dict['est_real_unc'],'*', label="est_real_unc")
         

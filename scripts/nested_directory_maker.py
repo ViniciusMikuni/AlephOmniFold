@@ -11,10 +11,7 @@ parser.add_argument('--run_id', type=int, default=0, help='integer ID to index a
 
 flags = parser.parse_args()
 
-if not os.path.exists(flags.plot_folder):
-    os.makedirs(flags.plot_folder)
-
 date_time = datetime.now().strftime("%d%m%Y_%H:%M:%S")
-    folder = '../nested_dir/'+date_time+'_gpu_'+str(flags.run_id)+'_'+str(flags.strapn)
-    if not os.path.exists(folder):
-        os.makedirs(folder)
+folder = '../nested_dir/'+date_time+'_gpu_'+str(flags.run_id)+'_'+str(flags.strapn)
+if not os.path.exists(folder):
+    os.makedirs(folder)

@@ -9,4 +9,4 @@
 #SBATCH --gpus-per-task=4
 
 export SLURM_CPU_BIND="cores"
-for i in {00..45};do srun -n 1 python /pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/scripts/aleph.py --run_id=$i --strapn=2; done 
+for i in {00..45};do srun -n 1 python /pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/scripts/aleph.py --run_id=$i --strapn=$STRAPN; done 

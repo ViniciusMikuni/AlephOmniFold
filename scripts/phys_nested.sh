@@ -9,4 +9,4 @@
 #SBATCH --gpus-per-task=4
 
 export SLURM_CPU_BIND="cores"
-srun -n 1 python pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/scripts/phys_nested.sh --run_id=$RUN_ID --strapn=$STRAPN;
+srun -n 1 python /pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/scripts/nested_directory_maker.py --run_id=$RUN_ID --strapn=$STRAPN;
