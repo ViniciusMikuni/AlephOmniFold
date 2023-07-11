@@ -45,7 +45,7 @@ est_real_stat = 1/np.sqrt(output_real_data)
 #############################################
 """Ensemble of 10 groups of 40"""
 #############################################
-weights_paths= glob('/pscratch/sd/m/mavaylon/redone_enemble_weights/*')
+weights_paths= glob('/global/cfs/cdirs/m3246/bnachman/LEP/weights/Weights_Avaylon/redone_enemble_weights/*')
 
 rem = len(weights_paths)%40
 if rem!=0: # gurantee even sets of 40
@@ -113,7 +113,7 @@ sub_sd_over_mean_40 = sub_sd_40/sub_ave_40
 #############################################
 """Bootstrap Full StrapN=40"""
 #############################################
-boot_folders=['/pscratch/sd/m/mavaylon/phys_weights_n_40/bootstrap_n_'+str(i)+'/*' for i in range(1,41)]
+boot_folders=['/global/cfs/cdirs/m3246/bnachman/LEP/weights/Weights_Avaylon/phys_weights_n_40/bootstrap_n_'+str(i)+'/*' for i in range(1,41)]
 
 boot_n = 1
 session_dict={}
@@ -145,7 +145,7 @@ sd_over_mean_full_40 = sd_full_40/ave_full_40
 #############################################
 """Bootstrap Sim Full n=40"""
 #############################################
-boot_folders=['/pscratch/sd/m/mavaylon/boot_sim_n_40/boot_sim_'+str(i)+'/*' for i in range(1,41)]
+boot_folders=['/global/cfs/cdirs/m3246/bnachman/LEP/weights/Weights_Avaylon/boot_sim_n_40/boot_sim_'+str(i)+'/*' for i in range(1,41)]
 
 boot_n = 1
 session_dict={}
@@ -177,7 +177,7 @@ sd_over_mean_full_40_sim = sd_sim_full_40/ave_sim_full_40
 #############################################
 """Bootstrap Full StrapN 10"""
 #############################################
-# boot_folders=['/pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/boot_new_double_check/new_boot_'+str(i)+'/*' for i in range(1,11)]
+# boot_folders=['/global/cfs/cdirs/m3246/bnachman/LEP/weights/Weights_Avaylon/phys_bootstrap/OmniFold/boot_new_double_check/new_boot_'+str(i)+'/*' for i in range(1,11)]
 
     
 # boot_n = 1
@@ -210,7 +210,7 @@ sd_over_mean_full_40_sim = sd_sim_full_40/ave_sim_full_40
 #############################################
 """Bootstrap Quarter"""
 #############################################
-# boot_folders=['/pscratch/sd/m/mavaylon/phys_bootstrap/OmniFold/boot_quarter_stratified_check/boot_quarter_'+str(i)+'/*' for i in range(1,11)]
+# boot_folders=['/global/cfs/cdirs/m3246/bnachman/LEP/weights/Weights_Avaylon/boot_quarter_stratified_check/boot_quarter_'+str(i)+'/*' for i in range(1,11)]
 
 
     
