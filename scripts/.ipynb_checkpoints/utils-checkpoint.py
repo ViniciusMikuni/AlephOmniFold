@@ -281,20 +281,22 @@ def SD_Plot(feed_dict,xlabel='',ylabel='',reference_name='Geant4',logy=False,bin
         
     if not sub:
         plt.plot(bin_centres,feed_dict['sd_over_mean_full'],'o', label="Bootstrap n=10")
-    #     plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Ensembl_20")
-    #     plt.plot(bin_centres,feed_dict['sd_over_mean_10'],'o', label="Ensembl_10")
     else:
-        # plt.plot(bin_centres,feed_dict['sd_over_mean'],'o', label="Bootstrap n=10")
+        """
+        Bootstrap
+        """
         # plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_full'],yerr=feed_dict['sd_over_mean_full']/np.sqrt(10), fmt='o', label="Bootstrap Full n=10")
+        # plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_quarter'],yerr=feed_dict['sd_over_mean_quarter']/np.sqrt(10), fmt='o', label="Bootstrap n=10 Quarter")
         plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_full_40'],yerr=feed_dict['sd_over_mean_full_40']/np.sqrt(40), fmt='o', label="Bootstrap Data Full n=40")
         plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_full_40_sim'],yerr=feed_dict['sd_over_mean_full_40_sim']/np.sqrt(40), fmt='o', label="Bootstrap Sim Full n=40")
-        # plt.errorbar(x=bin_centres,y=feed_dict['sd_over_mean_quarter'],yerr=feed_dict['sd_over_mean_quarter']/np.sqrt(10), fmt='o', label="Bootstrap n=10 Quarter")
-
+        
+        """
+        Ensemble
+        """
         plt.plot(bin_centres,feed_dict['sd_over_mean_40'],'o', label="Ensembl_40")
         plt.plot(bin_centres,feed_dict['sub_sd_over_mean_40'],'o', label="Sub_40")
         
     if est_uncertainty:
-        pass
         plt.plot(bin_centres,feed_dict['est_sim_unc'],'*', label="est_sim_unc")
         plt.plot(bin_centres,feed_dict['est_real_unc'],'*', label="est_real_unc")
         

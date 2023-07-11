@@ -28,10 +28,11 @@ nevts=int(flags.nevts)
 opt = LoadJson(flags.config)
 itrials=0
 
-data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
 #############################################
 """Estimate Statistical Uncertainty"""
 #############################################
+data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
+
 
 sim_det_data = 1-mc_reco[reco_mask]
 output_sim_data, bins = np.histogram(sim_det_data, bins=utils.binning, density=False)
@@ -272,3 +273,103 @@ fig,ax = utils.SD_Plot(feed_dict,
                            est_uncertainty=True)
 fig.savefig('{}/{}_{}.pdf'.format(flags.plot_folder,"Bootstrap_with_Sim_boot_n=40",opt['NAME']))
 
+"""
+f(**{keys:paths})-->dict of sd/ave
+
+plot
+"""
+def model_calculations(weight, set_size: Optional[int]=None):
+    if set_size is not None and isinstance(set_size, int):
+        rem = len(path_weights_ensemble)%set_size
+        if rem!=0: # gurantee even sets 
+            number_of_sessions = len(path_weights_ensemble)-rem
+            random.seed(2)
+            weights_paths_sample = random.sample(path_weights_ensemble,k=400)
+            sets_of_40 = [weights_paths_sample[i:i + 40] for i in range(0, len(weights_paths_sample), 40)]
+        else:
+            sets_of_40 = [weights_paths[i:i + 40] for i in range(0, len(weights_paths), 40)]
+
+    group_num=1
+    set_40 = sets_of_40[:10] # 10 sets of 40
+    session_dict={}
+    for group in tqdm(set_40):
+        hist_sessions_data =[]
+        bins_=[]
+        print('group: ', group)
+        for session in tqdm(group):
+            print('session: ', session)
+            mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrials),verbose=flags.verbose)
+            mfold.PrepareModel(nvars=data.shape[1]) # sets the dims for the MLP model used and defines the 2 models (step 1 and 2)
+            mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=0) # loads weights for model 2
+            omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
+
+            feed_dict_data=1-mc_gen[gen_mask][:,0]
+            output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+            hist_sessions_data.append(output_data)
+            bins_.append(bins)
+
+        ave = np.mean(hist_sessions_data,axis=0)
+        session_dict['group_'+str(group_num)] = ave
+        group_num=group_num+1
+
+    # calculate sd of the averages
+    sd_40 = np.std(list(session_dict.values()),axis=0)
+    ave_40 = np.mean(list(session_dict.values()),axis=0)
+    sd_over_mean_40 = sd_40/ave_40
+
+    # keys to present sd of ave per bin
+    bins = ['bin_'+str(i) for i in utils.binning]
+    
+def plot_calculations(path_data=None, path_weights_ensemble=None, ensemble_sub_group=False, path_bootstrap_40=None):
+    if path_data is not None:
+        data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts)
+
+
+        sim_det_data = 1-mc_reco[reco_mask]
+        output_sim_data, bins = np.histogram(sim_det_data, bins=utils.binning, density=False)
+        est_sim_stat = 1/np.sqrt(output_sim_data)
+
+        real_data = 1-data[:,0]
+        output_real_data, bins = np.histogram(real_data, bins=utils.binning, density=False)
+        est_real_stat = 1/np.sqrt(output_real_data)
+    
+    if path_weights_ensemble is not None:
+        rem = len(path_weights_ensemble)%40
+        if rem!=0: # gurantee even sets of 40
+            number_of_sessions = len(path_weights_ensemble)-rem
+            random.seed(2)
+            weights_paths_sample = random.sample(path_weights_ensemble,k=400)
+            sets_of_40 = [weights_paths_sample[i:i + 40] for i in range(0, len(weights_paths_sample), 40)]
+        else:
+            sets_of_40 = [weights_paths[i:i + 40] for i in range(0, len(weights_paths), 40)]
+
+        group_num=1
+        set_40 = sets_of_40[:10] # 10 sets of 40
+        session_dict={}
+        for group in tqdm(set_40):
+            hist_sessions_data =[]
+            bins_=[]
+            print('group: ', group)
+            for session in tqdm(group):
+                print('session: ', session)
+                mfold = Multifold(version='{}_trial{}'.format(opt['NAME'],itrials),verbose=flags.verbose)
+                mfold.PrepareModel(nvars=data.shape[1]) # sets the dims for the MLP model used and defines the 2 models (step 1 and 2)
+                mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=0) # loads weights for model 2
+                omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
+
+                feed_dict_data=1-mc_gen[gen_mask][:,0]
+                output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+                hist_sessions_data.append(output_data)
+                bins_.append(bins)
+
+            ave = np.mean(hist_sessions_data,axis=0)
+            session_dict['group_'+str(group_num)] = ave
+            group_num=group_num+1
+
+        # calculate sd of the averages
+        sd_40 = np.std(list(session_dict.values()),axis=0)
+        ave_40 = np.mean(list(session_dict.values()),axis=0)
+        sd_over_mean_40 = sd_40/ave_40
+
+        # keys to present sd of ave per bin
+        bins = ['bin_'+str(i) for i in utils.binning]
