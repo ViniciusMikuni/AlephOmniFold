@@ -12,6 +12,8 @@ from glob import glob
 from tqdm import tqdm
 from pprint import pprint
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+import h5py
 
 utils.SetStyle()
 
@@ -27,6 +29,20 @@ flags = parser.parse_args()
 nevts=int(flags.nevts)
 opt = LoadJson(flags.config)
 itrials=0
+
+# functions reused for saving h5's
+evalfolder = "../eval"
+def saveHistToH5(outFileName, counts, bins):
+    print("outfile: ", outFileName)
+    outDir = os.path.dirname(outFileName)
+    if not os.path.exists(outDir):
+        os.makedirs(outDir)
+    if not outFileName.endswith(".h5"):
+        outFileName += ".h5"
+    with h5py.File(outFileName, 'w') as hf:
+        hf.create_dataset("counts", data=counts)
+        hf.create_dataset("bins", data=bins)
+    return outFileName
 
 #############################################
 """Estimate Statistical Uncertainty"""
@@ -46,7 +62,7 @@ est_real_stat = 1/np.sqrt(output_real_data)
 """Ensemble of 10 groups of 40"""
 #############################################
 weights_paths= glob('/global/cfs/cdirs/m3246/bnachman/LEP/weights/Weights_Avaylon/redone_enemble_weights/*')
-
+    
 rem = len(weights_paths)%40
 if rem!=0: # gurantee even sets of 40
     number_of_sessions = len(weights_paths)-rem
@@ -75,6 +91,8 @@ for group in tqdm(set_40):
         hist_sessions_data.append(output_data)
         bins_.append(bins)
 
+        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
+        
     ave = np.mean(hist_sessions_data,axis=0)
     session_dict['group_'+str(group_num)] = ave
     group_num=group_num+1
@@ -104,7 +122,9 @@ for session in subset_40:
     feed_dict_data=1-mc_gen[gen_mask][:,0]
     output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
     sub_hist_sessions_data.append(output_data)
-    sub_bins_.append(bins) 
+    sub_bins_.append(bins)
+
+    outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
 
 sub_sd_40 = np.std(sub_hist_sessions_data,axis=0)
 sub_ave_40 = np.mean(sub_hist_sessions_data,axis=0)
@@ -134,6 +154,9 @@ for boot in boot_folders:
         # print(output_data)
         hist_sessions_data.append(output_data)
         bins_.append(bins)
+
+        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
+        
     ave = np.mean(hist_sessions_data,axis=0)
     session_dict['group_'+str(boot_n)] = ave
     boot_n=boot_n+1
@@ -166,12 +189,16 @@ for boot in boot_folders:
         # print(output_data)
         hist_sessions_data.append(output_data)
         bins_.append(bins)
+
+        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
+        
     ave = np.mean(hist_sessions_data,axis=0)
     session_dict['group_'+str(boot_n)] = ave
     boot_n=boot_n+1
 # calculate sd of the averages
 sd_sim_full_40 = np.std(list(session_dict.values()),axis=0)
 ave_sim_full_40 = np.mean(list(session_dict.values()),axis=0)
+print(sd_sim_full_40, ave_sim_full_40)
 sd_over_mean_full_40_sim = sd_sim_full_40/ave_sim_full_40
 
 #############################################
@@ -244,6 +271,7 @@ sd_over_mean_full_40_sim = sd_sim_full_40/ave_sim_full_40
 # ave_quarter = np.mean(list(session_dict.values()),axis=0)
 # sd_over_mean_quarter = sd_quarter/ave_quarter
 
+print("This is what I think orange curve is: sd_over_mean_full_40_sim")
 
 feed_dict = {
         'sd_over_mean_40': sd_over_mean_40,
@@ -256,6 +284,15 @@ feed_dict = {
         # 'sd_over_mean_quarter': sd_over_mean_quarter,
         # 'sd_over_mean_full': sd_over_mean_full,
     }
+
+# save dictionary to h5 files
+outFileName = '{}/{}_{}.h5'.format(flags.plot_folder,"plot_name",opt['NAME'])
+print("saving to: ", outFileName)
+with h5py.File(outFileName, 'w') as hf:
+    for key, val in feed_dict.items():
+        print(f"{key} {val.shape}")
+        hf.create_dataset(key, data=val)
+print("Done!")
 
 fig,ax = utils.SD_Plot(feed_dict,
                            weights = None,
