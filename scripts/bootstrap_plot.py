@@ -5,7 +5,7 @@ import random
 import os
 import tensorflow as tf
 import utils
-from omnifold import Multifold,LoadJson
+from omnifold import Multifold, LoadJson
 
 import tensorflow.keras.backend as K
 from glob import glob
