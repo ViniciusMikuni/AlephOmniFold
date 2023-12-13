@@ -31,8 +31,8 @@ opt = LoadJson(flags.config)
 itrials=0
 
 # functions reused for saving h5's
-evalfolder = "../eval"
-def saveHistToH5(outFileName, counts, bins):
+evalfolder = "../eval/weights"
+def saveHistToH5(outFileName, weights): # counts, bins
     print("outfile: ", outFileName)
     outDir = os.path.dirname(outFileName)
     if not os.path.exists(outDir):
@@ -40,8 +40,9 @@ def saveHistToH5(outFileName, counts, bins):
     if not outFileName.endswith(".h5"):
         outFileName += ".h5"
     with h5py.File(outFileName, 'w') as hf:
-        hf.create_dataset("counts", data=counts)
-        hf.create_dataset("bins", data=bins)
+        hf.create_dataset("weights", data=weights)
+        # hf.create_dataset("counts", data=counts)
+        # hf.create_dataset("bins", data=bins)
     return outFileName
 
 #############################################
@@ -85,13 +86,13 @@ for group in tqdm(set_40):
         mfold.PrepareModel(nvars=data.shape[1]) # sets the dims for the MLP model used and defines the 2 models (step 1 and 2)
         mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=0) # loads weights for model 2
         omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
+        
+        # feed_dict_data=1-mc_gen[gen_mask][:,0]
+        # output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+        # hist_sessions_data.append(output_data)
+        # bins_.append(bins)
 
-        feed_dict_data=1-mc_gen[gen_mask][:,0]
-        output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
-        hist_sessions_data.append(output_data)
-        bins_.append(bins)
-
-        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
+        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), omnifold_weights) # output_data, bins)
         
     ave = np.mean(hist_sessions_data,axis=0)
     session_dict['group_'+str(group_num)] = ave
@@ -119,12 +120,12 @@ for session in subset_40:
     mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=0) # loads weights for model 2
     omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
     
-    feed_dict_data=1-mc_gen[gen_mask][:,0]
-    output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
-    sub_hist_sessions_data.append(output_data)
-    sub_bins_.append(bins)
+    # feed_dict_data=1-mc_gen[gen_mask][:,0]
+    # output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+    # sub_hist_sessions_data.append(output_data)
+    # sub_bins_.append(bins)
 
-    outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
+    outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), omnifold_weights) # output_data, bins)
 
 sub_sd_40 = np.std(sub_hist_sessions_data,axis=0)
 sub_ave_40 = np.mean(sub_hist_sessions_data,axis=0)
@@ -148,14 +149,12 @@ for boot in boot_folders:
         mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=str(boot_n)) # loads weights for model 2
         omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
 
-        feed_dict_data=1-mc_gen[gen_mask][:,0]
-        output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+        # feed_dict_data=1-mc_gen[gen_mask][:,0]
+        # output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+        # hist_sessions_data.append(output_data)
+        # bins_.append(bins)
 
-        # print(output_data)
-        hist_sessions_data.append(output_data)
-        bins_.append(bins)
-
-        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
+        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), omnifold_weights) #output_data, bins)
         
     ave = np.mean(hist_sessions_data,axis=0)
     session_dict['group_'+str(boot_n)] = ave
@@ -183,14 +182,12 @@ for boot in boot_folders:
         mfold.LoadModel(iteration=opt['NITER']-1, weights_folder_path=session, strapn=str(boot_n)) # loads weights for model 2
         omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2) 
 
-        feed_dict_data=1-mc_gen[gen_mask][:,0]
-        output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+        # feed_dict_data=1-mc_gen[gen_mask][:,0]
+        # output_data, bins = np.histogram(feed_dict_data, bins=utils.binning, weights = omnifold_weights[gen_mask], density=False)
+        # hist_sessions_data.append(output_data)
+        # bins_.append(bins)
 
-        # print(output_data)
-        hist_sessions_data.append(output_data)
-        bins_.append(bins)
-
-        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), output_data, bins)
+        outFileName = saveHistToH5("{}/{}".format(evalfolder, session.split("Weights_Avaylon/")[-1].replace(".h5", "_eval.h5")), omnifold_weights) # output_data, bins)
         
     ave = np.mean(hist_sessions_data,axis=0)
     session_dict['group_'+str(boot_n)] = ave
@@ -198,7 +195,6 @@ for boot in boot_folders:
 # calculate sd of the averages
 sd_sim_full_40 = np.std(list(session_dict.values()),axis=0)
 ave_sim_full_40 = np.mean(list(session_dict.values()),axis=0)
-print(sd_sim_full_40, ave_sim_full_40)
 sd_over_mean_full_40_sim = sd_sim_full_40/ave_sim_full_40
 
 #############################################
@@ -271,37 +267,36 @@ sd_over_mean_full_40_sim = sd_sim_full_40/ave_sim_full_40
 # ave_quarter = np.mean(list(session_dict.values()),axis=0)
 # sd_over_mean_quarter = sd_quarter/ave_quarter
 
-print("This is what I think orange curve is: sd_over_mean_full_40_sim")
 
-feed_dict = {
-        'sd_over_mean_40': sd_over_mean_40,
-        'sub_sd_over_mean_40': sub_sd_over_mean_40,
-        'sd_over_mean_full_40': sd_over_mean_full_40,
-        'sd_over_mean_full_40_sim' : sd_over_mean_full_40_sim,
-        'mc gen':1-mc_gen[gen_mask][:,0],
-        'est_sim_unc': est_sim_stat,
-        'est_real_unc': est_real_stat
-        # 'sd_over_mean_quarter': sd_over_mean_quarter,
-        # 'sd_over_mean_full': sd_over_mean_full,
-    }
+# feed_dict = {
+#         'sd_over_mean_40': sd_over_mean_40,
+#         'sub_sd_over_mean_40': sub_sd_over_mean_40,
+#         'sd_over_mean_full_40': sd_over_mean_full_40,
+#         'sd_over_mean_full_40_sim' : sd_over_mean_full_40_sim,
+#         'mc gen':1-mc_gen[gen_mask][:,0],
+#         'est_sim_unc': est_sim_stat,
+#         'est_real_unc': est_real_stat
+#         # 'sd_over_mean_quarter': sd_over_mean_quarter,
+#         # 'sd_over_mean_full': sd_over_mean_full,
+#     }
 
 # save dictionary to h5 files
-outFileName = '{}/{}_{}.h5'.format(flags.plot_folder,"plot_name",opt['NAME'])
-print("saving to: ", outFileName)
-with h5py.File(outFileName, 'w') as hf:
-    for key, val in feed_dict.items():
-        print(f"{key} {val.shape}")
-        hf.create_dataset(key, data=val)
-print("Done!")
+# outFileName = '{}/{}_{}.h5'.format(flags.plot_folder,"plot_name",opt['NAME'])
+# print("saving to: ", outFileName)
+# with h5py.File(outFileName, 'w') as hf:
+#     for key, val in feed_dict.items():
+#         print(f"{key} {val.shape}")
+#         hf.create_dataset(key, data=val)
+# print("Done!")
 
-fig,ax = utils.SD_Plot(feed_dict,
-                           weights = None,
-                           binning=utils.binning,
-                           xlabel='1-T',logy=False,
-                           ylabel='Uncertainty',
-                           reference_name='mc gen',
-                           sub=True,
-                           density=False,
-                           show_data=False,
-                           est_uncertainty=True)
-fig.savefig('{}/{}_{}.pdf'.format(flags.plot_folder,"plot_name",opt['NAME']))
+# fig,ax = utils.SD_Plot(feed_dict,
+#                            weights = None,
+#                            binning=utils.binning,
+#                            xlabel='1-T',logy=False,
+#                            ylabel='Uncertainty',
+#                            reference_name='mc gen',
+#                            sub=True,
+#                            density=False,
+#                            show_data=False,
+#                            est_uncertainty=True)
+# fig.savefig('{}/{}_{}.pdf'.format(flags.plot_folder,"plot_name",opt['NAME']))
