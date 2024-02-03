@@ -1,0 +1,6 @@
+# folders
+weights/
+
+# files
+*.pyc
+*checkpoint*
