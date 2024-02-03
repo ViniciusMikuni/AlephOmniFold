@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Dense, Input, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.callbacks import EarlyStopping,ModelCheckpoint, ReduceLROnPlateau
 import sys, os
-import horovod.tensorflow.keras as hvd
+# import horovod.tensorflow.keras as hvd
 import json, yaml
 import utils
 from datetime import datetime
@@ -140,11 +140,11 @@ class Multifold():
         test_data = data.take(NTEST).repeat().batch(self.BATCH_SIZE)
         train_data = data.skip(NTEST).repeat().batch(self.BATCH_SIZE)
 
-        verbose = 1 if hvd.rank() == 0 else 0
+        verbose = 1 # if hvd.rank() == 0 else 0
         
         callbacks = [
-            hvd.callbacks.BroadcastGlobalVariablesCallback(0),
-            hvd.callbacks.MetricAverageCallback(),
+            # hvd.callbacks.BroadcastGlobalVariablesCallback(0),
+            # hvd.callbacks.MetricAverageCallback(),
             # hvd.callbacks.LearningRateWarmupCallback(
             #     initial_lr=self.hvd_lr, warmup_epochs=self.opt['NWARMUP'],
             #     verbose=verbose),
@@ -153,12 +153,12 @@ class Multifold():
         ]
         
         
-        if hvd.rank() ==0:
-            callbacks.append(
-                ModelCheckpoint('{}/{}_iter{}_step{}.h5'.format(
-                    self.saved_weights_folder,self.version,iteration,stepn),
-                                save_best_only=True,mode='auto',period=1,save_weights_only=True))
-            
+        # if hvd.rank() ==0:
+        callbacks.append(
+            ModelCheckpoint('{}/{}_iter{}_step{}.h5'.format(
+                self.saved_weights_folder,self.version,iteration,stepn),
+                            save_best_only=True,mode='auto',period=1,save_weights_only=True))
+        
         _ =  model.fit(
             train_data,
             epochs=self.EPOCHS,
@@ -220,9 +220,9 @@ class Multifold():
         self.weights_mc = self.weights_mc/np.sum(self.weights_mc[self.not_pass_reco==0])
         self.weights_mc *= 1.0*self.weights_data.shape[0]
     def CompileModel(self,lr,model):
-        self.hvd_lr = lr*np.sqrt(hvd.size())
-        opt = tensorflow.keras.optimizers.Adadelta(learning_rate=self.hvd_lr)
-        opt = hvd.DistributedOptimizer(opt)
+        # self.hvd_lr = lr*np.sqrt(hvd.size())
+        opt = tensorflow.keras.optimizers.Adadelta(learning_rate=lr) #self.hvd_lr)
+        # opt = hvd.DistributedOptimizer(opt)
 
         model.compile(loss=weighted_binary_crossentropy,
                       optimizer=opt,experimental_run_tf_function=False)

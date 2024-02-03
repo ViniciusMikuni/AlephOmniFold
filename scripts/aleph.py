@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import argparse
 import os
-import horovod.tensorflow.keras as hvd
+# import horovod.tensorflow.keras as hvd
 import tensorflow as tf
 import utils
 from omnifold import  Multifold,LoadJson
@@ -10,13 +10,13 @@ import tensorflow.keras.backend as K
 
 utils.SetStyle()
 
-hvd.init()
+# hvd.init()
 # Horovod: pin GPU to be used to process local rank (one GPU per process)
 gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
     tf.config.experimental.set_memory_growth(gpu, True)
 if gpus:
-    tf.config.experimental.set_visible_devices(gpus[hvd.local_rank()], 'GPU')
+    tf.config.experimental.set_visible_devices(gpus, 'GPU') # [hvd.local_rank()], 'GPU')
 
 
 parser = argparse.ArgumentParser()
@@ -41,21 +41,21 @@ if not os.path.exists(flags.plot_folder):
 
 data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts,half=True)
 
-if hvd.rank()==0:
-    #Let's make a simple histogram of the feature we want to unfold
-    feed_dict={
-        'data reco':1-data[:,0],
-        'mc reco':1-mc_reco[reco_mask],
-        'mc gen':1-mc_gen[gen_mask],
-    }
-    
-    fig,ax = utils.HistRoutine(feed_dict,plot_ratio=True,
-                               binning=utils.binning,
-                               xlabel='1-T',logy=True,
-                               ylabel='Normalized events',
-                               reference_name='mc gen')
-    
-    fig.savefig('{}/{}.pdf'.format(flags.plot_folder,"Hist_T"))
+# if hvd.rank()==0:
+#Let's make a simple histogram of the feature we want to unfold
+feed_dict={
+    'data reco':1-data[:,0],
+    'mc reco':1-mc_reco[reco_mask],
+    'mc gen':1-mc_gen[gen_mask],
+}
+
+fig,ax = utils.HistRoutine(feed_dict,plot_ratio=True,
+                           binning=utils.binning,
+                           xlabel='1-T',logy=True,
+                           ylabel='Normalized events',
+                           reference_name='mc gen')
+
+fig.savefig('{}/{}.pdf'.format(flags.plot_folder,"Hist_T"))
 
 for itrial in range(opt['NTRIAL']):
     K.clear_session()

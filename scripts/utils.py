@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib import gridspec
 import argparse
 import os
-import horovod.tensorflow.keras as hvd
+# import horovod.tensorflow.keras as hvd
 import tensorflow as tf
 import random
 import pandas as pd
@@ -109,10 +109,10 @@ def Detector(sample,bias=0,std=0.5):
 
 
 def DataLoader(base_path,config,nevts=-1, half=False):
-    hvd.init()
+    # hvd.init()
     if nevts==-1:nevts=None
-    data = np.load(os.path.join(base_path,config['FILE_DATA_RECO']))[hvd.rank():nevts:hvd.size()]
-    data_mask = np.load(os.path.join(base_path,config['FILE_DATA_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]
+    data = np.load(os.path.join(base_path,config['FILE_DATA_RECO'])) # [hvd.rank():nevts:hvd.size()]
+    data_mask = np.load(os.path.join(base_path,config['FILE_DATA_FLAG_RECO'])) # [hvd.rank():nevts:hvd.size()]
     if half:
         np.random.seed(2)
         df=pd.DataFrame({'data':data*10})
@@ -124,15 +124,15 @@ def DataLoader(base_path,config,nevts=-1, half=False):
         
         data = np.expand_dims(data[data_mask],-1)
         
-        df=pd.DataFrame({'mc_reco': np.load(os.path.join(base_path,config['FILE_MC_RECO']))[hvd.rank():nevts:hvd.size()]*10})
-        df['reco_mask'] = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]==1
+        df=pd.DataFrame({'mc_reco': np.load(os.path.join(base_path,config['FILE_MC_RECO']))*10}) # [hvd.rank():nevts:hvd.size()]*10})
+        df['reco_mask'] = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))==1 # [hvd.rank():nevts:hvd.size()]==1
         df['bin']=pd.cut(df['mc_reco'], 10)
         sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=.25))
         mc_reco=sample['mc_reco'].values/10
         reco_mask=sample['reco_mask'].values
         
-        df=pd.DataFrame({'mc_gen': np.load(os.path.join(base_path,config['FILE_MC_GEN']))[hvd.rank():nevts:hvd.size()]*10})
-        df['gen_mask'] = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN']))[hvd.rank():nevts:hvd.size()]==1
+        df=pd.DataFrame({'mc_gen': np.load(os.path.join(base_path,config['FILE_MC_GEN']))*10}) # [hvd.rank():nevts:hvd.size()]*10})
+        df['gen_mask'] = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN'])) == 1 # [hvd.rank():nevts:hvd.size()]==1
         df['bin']=pd.cut(df['mc_gen'],10)
         sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=.25))
         sample=sample.sort_values(by='bin').iloc[:-1,:]
@@ -146,10 +146,10 @@ def DataLoader(base_path,config,nevts=-1, half=False):
     else:  
         #We only want data events passing a selection criteria
         data = np.expand_dims(data[data_mask],-1)
-        mc_reco = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_RECO']))[hvd.rank():nevts:hvd.size()],-1)
-        mc_gen = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_GEN']))[hvd.rank():nevts:hvd.size()],-1)
-        reco_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))[hvd.rank():nevts:hvd.size()]==1
-        gen_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN']))[hvd.rank():nevts:hvd.size()]==1
+        mc_reco = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_RECO'])),-1) # [hvd.rank():nevts:hvd.size()],-1)
+        mc_gen = np.expand_dims(np.load(os.path.join(base_path,config['FILE_MC_GEN']))-1) # [hvd.rank():nevts:hvd.size()],-1)
+        reco_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_RECO']))==1 # [hvd.rank():nevts:hvd.size()]==1
+        gen_mask = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN']))==1 # [hvd.rank():nevts:hvd.size()]==1
         # mc_reco[reco_mask==0]=-10
         # mc_gen[gen_mask==0]=-10
 
