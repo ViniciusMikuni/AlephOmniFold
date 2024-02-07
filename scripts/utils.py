@@ -130,7 +130,6 @@ def DataLoader(base_path,config,nevts=-1, half=False):
         sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=.25))
         mc_reco=sample['mc_reco'].values/10
         reco_mask=sample['reco_mask'].values
-        
         df=pd.DataFrame({'mc_gen': np.load(os.path.join(base_path,config['FILE_MC_GEN']))*10}) # [hvd.rank():nevts:hvd.size()]*10})
         df['gen_mask'] = np.load(os.path.join(base_path,config['FILE_MC_FLAG_GEN'])) == 1 # [hvd.rank():nevts:hvd.size()]==1
         df['bin']=pd.cut(df['mc_gen'],10)
