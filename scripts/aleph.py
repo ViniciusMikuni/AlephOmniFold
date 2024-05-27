@@ -41,11 +41,15 @@ if not os.path.exists(flags.plot_folder):
     os.makedirs(flags.plot_folder)
 
 
-data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts,half=True)
-print(data.shape, mc_reco.shape, reco_mask.shape, mc_gen.shape, gen_mask.shape)
+# previously used
+# data, mc_reco,mc_gen,reco_mask,gen_mask = utils.DataLoader(flags.file_path,opt,nevts,half=True)
+# print(data.shape, mc_reco.shape, reco_mask.shape, mc_gen.shape, gen_mask.shape)
+
+# newly used
 data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(LoadJson("config_omnifold_test.json"), nevts=-1, half=True)
 print(data.shape, mc_reco.shape, reco_mask.shape, mc_gen.shape, gen_mask.shape)
-exit()
+# exit()
+
 # if hvd.rank()==0:
 #Let's make a simple histogram of the feature we want to unfold
 feed_dict={

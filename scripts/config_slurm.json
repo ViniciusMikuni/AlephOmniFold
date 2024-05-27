@@ -1,0 +1,11 @@
+{
+    "submitit": true,
+    "slurm": {
+        "slurm_partition": "ai+s",
+        "slurm_job_name": "sample",
+        "slurm_nodes": 1,
+        "slurm_time": "12:00:00",
+        "slurm_gres": "gpu:1",
+        "slurm_mem_per_cpu": 20000
+    }
+}
