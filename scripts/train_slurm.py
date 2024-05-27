@@ -41,14 +41,19 @@ if gpus:
 def train(
     conf
 ):
+
+    print(conf)
     
     # update %j with actual job number
     output_directory = conf["output_directory"]
     try:
         job_env = submitit.JobEnvironment()
-        output_directory = Path(str(output_directory).replace("%j", str(job_env.job_id)))
+        job_id = job_env.job_id
+        output_directory = Path(str(output_directory).replace("%j", str(job_id)))
     except:
-        output_directory = Path(str(output_directory).replace("%j", "%08x" % random.randrange(16**8)))
+        job_id = random.randrange(16**8)
+        output_directory = Path(str(output_directory).replace("%j", "%08x" % job_id))
+        
     os.makedirs(output_directory, exist_ok=True)
     print(output_directory)
 
@@ -63,8 +68,11 @@ def train(
     # launch training
     for itrial in range(conf['NTRIAL']):
       K.clear_session()
-      mfold = Multifold(version='{}_trial{}_strapn{}'.format(conf['NAME'],itrial,flags.strapn),
-                        strapn=flags.strapn,verbose=flags.verbose,run_id=flags.run_id, boot='mc')
+      mfold = Multifold(version='{}_trial{}_strapn{}'.format(conf['NAME'],itrial,conf["strapn"]),
+                        strapn=conf["strapn"],
+                        verbose=conf["verbose"],
+                        run_id=job_id,
+                        boot='mc')
       mfold.mc_gen = mc_gen # the sim pre-detector
       mfold.mc_reco =mc_reco # sim post-detector
       mfold.data = data # experimental real data
@@ -86,6 +94,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--slurm", help="path to json file containing slurm configuration", default=None)
     parser.add_argument("--njobs", help="number of jobs to actually launch. default is all", default=-1, type=int)
+    parser.add_argument('--strapn', type=int,default=0, help='Index of the bootstrap to run. 0 means no bootstrap')
+    parser.add_argument('--verbose', action='store_true', default=False,help='Run the scripts with more verbose output')
     args = parser.parse_args()
     
     # read in query
@@ -105,7 +115,7 @@ if __name__ == "__main__":
     for TrackVariation in range(0, 10):
        for EvtVariation in range(0, 2):
             confs.append({
-              'output_directory' : top_dir, # Path(top_dir, f'./weights-nFilters{n_filters}-poolSize{pool_size}-checkpoints').resolve(),
+              'output_directory' : str(top_dir), # Path(top_dir, f'./weights-nFilters{n_filters}-poolSize{pool_size}-checkpoints').resolve(),
               'FILE_MC':'/home/badea/MoveFromMCP011Workstation/e+e-/aleph/data/processed/20220514/alephMCRecoAfterCutPaths_1994_ThrustReprocess.npz',
               'FILE_DATA':'/home/badea/MoveFromMCP011Workstation/e+e-/aleph/data/processed/20220514/LEP1Data1994_recons_aftercut-MERGED_ThrustReprocess.npz',
               'TrackVariation': TrackVariation,
@@ -118,6 +128,8 @@ if __name__ == "__main__":
               'NWARMUP': 5,
               'NAME':'toy',
               'NPATIENCE': 10,
+              'strapn' : args.strapn,
+              'verbose' : args.verbose
             })
 
             
@@ -149,5 +161,5 @@ if __name__ == "__main__":
             
             print(conf)
 
-            job = executor.submit(train, conf) **conf
+            job = executor.submit(train, conf) # **conf
             jobs.append(job)
