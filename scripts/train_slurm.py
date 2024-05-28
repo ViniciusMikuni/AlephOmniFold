@@ -65,6 +65,11 @@ def train(
     # load data
     data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(conf, nevts=-1, half=True)
 
+    # make weights directory
+    weights_folder = Path(output_directory, "./weights").resolve()
+    weights_folder.mkdir()
+    weights_folder = str(weights_folder)
+    
     # launch training
     for itrial in range(conf['NTRIAL']):
       K.clear_session()
@@ -72,7 +77,10 @@ def train(
                         strapn=conf["strapn"],
                         verbose=conf["verbose"],
                         run_id=job_id,
-                        boot='mc')
+                        boot='mc',
+                        weights_folder=weights_folder,
+                        config_file=configPath
+      )
       mfold.mc_gen = mc_gen # the sim pre-detector
       mfold.mc_reco =mc_reco # sim post-detector
       mfold.data = data # experimental real data

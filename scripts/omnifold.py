@@ -30,7 +30,16 @@ def LoadJson(file_name):
 
 
 class Multifold():
-    def __init__(self,version,strapn=0,config_file='config_omnifold.json',verbose=False, run_id=0, boot=None):
+    def __init__(
+            self,
+            version,
+            strapn=0,
+            config_file='config_omnifold.json',
+            verbose=False,
+            run_id=0,
+            boot=None,
+            weights_folder='../weights'
+    ):
         self.opt = LoadJson(config_file)
         self.niter = self.opt['NITER']
         self.version=version
@@ -45,7 +54,7 @@ class Multifold():
         if self.boot is not None:
             print("Bootstrap set for " + self.boot)
                 
-        self.weights_folder = '../weights'
+        self.weights_folder = weights_folder
         if not os.path.exists(self.weights_folder):
             os.makedirs(self.weights_folder)
             
@@ -55,7 +64,10 @@ class Multifold():
         self.EPOCHS=self.opt['EPOCHS']
         
         date_time = datetime.now().strftime("%d%m%Y_%H:%M:%S")
-        self.saved_weights_folder = '../weights/'+date_time+'_gpu_'+str(self.run_id)+'_'+str(self.strapn)
+
+        # self.saved_weights_folder = '../weights/'+date_time+'_gpu_'+str(self.run_id)+'_'+str(self.strapn) # commented by anthony on may 28 2024
+        self.saved_weights_folder = self.weights_folder
+        
         if not os.path.exists(self.saved_weights_folder):
             os.makedirs(self.saved_weights_folder)
         
