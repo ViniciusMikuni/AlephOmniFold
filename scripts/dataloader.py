@@ -53,29 +53,32 @@ def DataLoader(config, nevts=-1, half=False, frac=0.25):
         # an issue tho is that you can get bin migrations
         
         np.random.seed(2)
-        df=pd.DataFrame({'data':data*10})
+        scale = 10
+        nbins = 5 # default was 10
+        
+        df=pd.DataFrame({'data':data*scale})
         df['data_mask']=data_mask
-        df['bin']=pd.cut(df['data'],10)
+        df['bin']=pd.cut(df['data'],nbins)
         sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=frac))
-        data=sample['data'].values/10
+        data=sample['data'].values/scale
         data_mask=sample['data_mask'].values
 
         data = np.expand_dims(data[data_mask],-1)
 
-        df=pd.DataFrame({'mc_reco': mc_reco*10})
+        df=pd.DataFrame({'mc_reco': mc_reco*scale})
         df['reco_mask'] = reco_mask == 1
-        df['bin']=pd.cut(df['mc_reco'], 10)
+        df['bin']=pd.cut(df['mc_reco'], nbins)
         sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=frac))
-        mc_reco=sample['mc_reco'].values/10
+        mc_reco=sample['mc_reco'].values/scale
         reco_mask=sample['reco_mask'].values
         print(reco_mask.shape, mc_reco.shape)
         
-        df=pd.DataFrame({'mc_gen': mc_gen*10})
+        df=pd.DataFrame({'mc_gen': mc_gen*scale})
         df['gen_mask'] = gen_mask == 1
-        df['bin']=pd.cut(df['mc_gen'],10)
+        df['bin']=pd.cut(df['mc_gen'],nbins)
         sample=df.groupby('bin',group_keys=False).apply(lambda x:x.sample(frac=frac))
         sample=sample.sort_values(by='bin').iloc[:-1,:]
-        mc_gen=sample['mc_gen'].values/10
+        mc_gen=sample['mc_gen'].values/scale
         gen_mask=sample['gen_mask'].values
         print(gen_mask.shape, mc_gen.shape)
         
