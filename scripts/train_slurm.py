@@ -64,7 +64,7 @@ def train(
       json.dump(conf, outfile)
     
     # load data
-    data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(conf, nevts=-1, half=True, frac=conf["dataloader_frac"])
+    data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(conf)
 
     # make weights directory
     weights_folder = Path(output_directory, "./weights").resolve()
@@ -139,7 +139,6 @@ if __name__ == "__main__":
               'NPATIENCE': 10,
               'strapn' : args.strapn,
               'verbose' : args.verbose,
-              'dataloader_frac' : 0.5 # nominal is 0.25
             })
 
             
