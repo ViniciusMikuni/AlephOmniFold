@@ -1,6 +1,7 @@
-# Goal is to launch many of these python aleph.py --config config_omnifold_test.json --file_path ~/MoveFromMCP011Workstation/e+e-/aleph/data/processed/
-# create a new configXX.json file that is saved in each output directory
-# launch the trainings
+'''
+Author: Anthony Badea
+Date: May 27, 2024
+'''
 
 # fix for keras v3.0 update
 import os
@@ -63,7 +64,7 @@ def train(
       json.dump(conf, outfile)
     
     # load data
-    data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(conf, nevts=-1, half=True)
+    data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(conf, nevts=-1, half=True, frac=conf["dataloader_frac"])
 
     # make weights directory
     weights_folder = Path(output_directory, "./weights").resolve()
@@ -132,12 +133,13 @@ if __name__ == "__main__":
               'NTRIAL':1,
               'LR': 1e-3,
               'BATCH_SIZE': 5000,
-              'EPOCHS': 500,
+              'EPOCHS': 1, # 500
               'NWARMUP': 5,
               'NAME':'toy',
               'NPATIENCE': 10,
               'strapn' : args.strapn,
-              'verbose' : args.verbose
+              'verbose' : args.verbose,
+              'dataloader_frac' : 0.5 # nominal is 0.25
             })
 
             

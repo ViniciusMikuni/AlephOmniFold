@@ -1,0 +1,14 @@
+{
+    'FILE_MC':'/home/badea/MoveFromMCP011Workstation/e+e-/aleph/data/processed/20220514/alephMCRecoAfterCutPaths_1994_ThrustReprocess.npz',
+    'FILE_DATA':'/home/badea/MoveFromMCP011Workstation/e+e-/aleph/data/processed/20220514/LEP1Data1994_recons_aftercut-MERGED_ThrustReprocess.npz',
+    'TrackVariation':6,
+    'EvtVariation':1,
+    'NITER': 1,
+    'NTRIAL':1,
+    'LR': 1e-3,
+    'BATCH_SIZE': 5000,
+    'EPOCHS': 1,
+    'NWARMUP': 5,
+    'NAME':'toy',
+    'NPATIENCE': 10,
+}
