@@ -173,7 +173,7 @@ if __name__ == "__main__":
     # add configurations for bootstrap mc or data
     if args.run_bootstrap_mc or args.run_bootstrap_data:
       boot = "mc" if args.run_bootstrap_mc else "data"
-      nstraps = 41
+      nstraps = 40
       for strapn in range(nstraps):
         temp = training_conf.copy() # copy overall
         temp["boot"] = boot # the combination of boot and strapn will automatically do poisson weights within omnifold.py
