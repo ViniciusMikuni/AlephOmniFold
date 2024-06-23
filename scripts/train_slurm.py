@@ -21,6 +21,8 @@ import argparse
 import json
 import submitit
 import shutil
+import h5py
+import numpy as np
 
 # custom code
 import dataloader
@@ -66,8 +68,12 @@ def train(
     # load data
     data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(conf)
 
+    # create Poisson(1) weights
+    weights_mc = np.random.poisson(1, mc_gen.shape[0]) # None
+    weights_data = np.random.poisson(1, data.shape[0]) # None
+
     # make weights directory
-    weights_folder = Path(output_directory, "./weights").resolve()
+    weights_folder = Path(output_directory, "./model_weights").resolve()
     weights_folder.mkdir()
     weights_folder = str(weights_folder)
     
@@ -83,11 +89,11 @@ def train(
                         config_file=configPath
       )
       mfold.mc_gen = mc_gen # the sim pre-detector
-      mfold.mc_reco =mc_reco # sim post-detector
+      mfold.mc_reco = mc_reco # sim post-detector
       mfold.data = data # experimental real data
       
       # tf.random.set_seed(itrial)
-      mfold.Preprocessing(pass_reco=reco_mask,pass_gen=gen_mask)
+      mfold.Preprocessing(weights_mc=weights_mc, weights_data=weights_data, pass_reco=reco_mask, pass_gen=gen_mask)
       """
       Preprocessing goes as follows
       self.PrepareWeights(weights_mc,weights_data,pass_reco,pass_gen)        
@@ -96,7 +102,15 @@ def train(
       
       """
       mfold.Unfold()
-    
+
+      # get weights
+      omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2)
+      
+      # save weights to h5 file
+      outFileName = Path(output_directory, "omnifold_weights.h5").resolve()
+      with h5py.File(outFileName, 'w') as hf:
+        hf.create_dataset("weights", data=omnifold_weights)
+        
 if __name__ == "__main__":
 
     # set up command line arguments
@@ -121,19 +135,19 @@ if __name__ == "__main__":
 
     # create some configurations
     confs = []
-    for TrackVariation in range(0, 10):
+    for TrackVariation in range(0, 9):
        for EvtVariation in range(0, 2):
             confs.append({
               'output_directory' : str(top_dir), # Path(top_dir, f'./weights-nFilters{n_filters}-poolSize{pool_size}-checkpoints').resolve(),
-              'FILE_MC':'/home/badea/MoveFromMCP011Workstation/e+e-/aleph/data/processed/20220514/alephMCRecoAfterCutPaths_1994_ThrustReprocess.npz',
-              'FILE_DATA':'/home/badea/MoveFromMCP011Workstation/e+e-/aleph/data/processed/20220514/LEP1Data1994_recons_aftercut-MERGED_ThrustReprocess.npz',
+              'FILE_MC':'/home/badea/e+e-/aleph/data/processed/20220514/alephMCRecoAfterCutPaths_1994_ThrustReprocess.npz',
+              'FILE_DATA':'/home/badea/e+e-/aleph/data/processed/20220514/LEP1Data1994_recons_aftercut-MERGED_ThrustReprocess.npz',
               'TrackVariation': TrackVariation,
               'EvtVariation': EvtVariation,
               'NITER': 5,
               'NTRIAL':1,
               'LR': 1e-3,
               'BATCH_SIZE': 5000,
-              'EPOCHS': 1, # 500
+              'EPOCHS': 500,
               'NWARMUP': 5,
               'NAME':'toy',
               'NPATIENCE': 10,
@@ -149,7 +163,7 @@ if __name__ == "__main__":
             if args.njobs != -1 and (iC+1) > args.njobs:
                 continue
             print(conf)
-            train(**conf)
+            train(conf)
         exit()
     
 
