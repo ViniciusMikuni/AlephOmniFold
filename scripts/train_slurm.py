@@ -154,7 +154,7 @@ if __name__ == "__main__":
       'strapn' : 0,
       'verbose' : args.verbose,
       'boot' : None,
-      'poisson_weights' : True
+      'poisson_weights' : False
     }
     
     # list of configurations to launch
@@ -167,6 +167,7 @@ if __name__ == "__main__":
           temp = training_conf.copy() # copy overall
           temp["TrackVariation"] = TrackVariation
           temp["EvtVariation"] = EvtVariation
+          temp["poisson_weights"] = True
           confs.append(temp)
 
     # add configurations for bootstrap mc or data
@@ -175,7 +176,7 @@ if __name__ == "__main__":
       nstraps = 41
       for strapn in range(nstraps):
         temp = training_conf.copy() # copy overall
-        temp["boot"] = boot
+        temp["boot"] = boot # the combination of boot and strapn will automatically do poisson weights within omnifold.py
         temp["strapn"] = strapn
         temp["poisson_weights"] = False
         confs.append(temp)
