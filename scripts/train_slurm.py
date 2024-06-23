@@ -26,7 +26,7 @@ import numpy as np
 
 # custom code
 import dataloader
-from omnifold import  Multifold,LoadJson
+from omnifold import  Multifold, LoadJson
 
 # set gpu growth
 gpus = tf.config.list_physical_devices('GPU')
@@ -69,8 +69,8 @@ def train(
     data, mc_reco, mc_gen, reco_mask, gen_mask = dataloader.DataLoader(conf)
 
     # create Poisson(1) weights
-    weights_mc = np.random.poisson(1, mc_gen.shape[0]) # None
-    weights_data = np.random.poisson(1, data.shape[0]) # None
+    weights_mc = np.random.poisson(1, mc_gen.shape[0]) if conf["poisson_weights"] else None
+    weights_data = np.random.poisson(1, data.shape[0]) if conf["poisson_weights"] else None
 
     # make weights directory
     weights_folder = Path(output_directory, "./model_weights").resolve()
@@ -84,7 +84,7 @@ def train(
                         strapn=conf["strapn"],
                         verbose=conf["verbose"],
                         run_id=job_id,
-                        boot='mc',
+                        boot=conf["boot"],
                         weights_folder=weights_folder,
                         config_file=configPath
       )
@@ -101,7 +101,7 @@ def train(
       self.PrepareModel(nvars = self.mc_gen.shape[1])
       
       """
-      mfold.Unfold()
+      mfold.Unfold() # note that this will automatically set a random seed based on random_training_seed inside of omnifold.py
 
       # get weights
       omnifold_weights = mfold.reweight(mc_gen[gen_mask],mfold.model2)
@@ -117,8 +117,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--slurm", help="path to json file containing slurm configuration", default=None)
     parser.add_argument("--njobs", help="number of jobs to actually launch. default is all", default=-1, type=int)
-    parser.add_argument('--strapn', type=int,default=0, help='Index of the bootstrap to run. 0 means no bootstrap')
     parser.add_argument('--verbose', action='store_true', default=False,help='Run the scripts with more verbose output')
+    parser.add_argument('--run_systematics', action='store_true', default=False,help='Run the track and event selection systematic variations')
+    parser.add_argument('--run_bootstrap_mc', action='store_true', default=False,help='Run the bootstrapping for MC')
+    parser.add_argument('--run_bootstrap_data', action='store_true', default=False,help='Run the bootstrapping for data')
+    parser.add_argument('--run_ensembling', action='store_true', default=False,help='Run the ensembling by retraining without changing the inputs')
     args = parser.parse_args()
     
     # read in query
@@ -133,29 +136,57 @@ if __name__ == "__main__":
     # create top level output directory
     top_dir = Path("results", f'./training-{"%08x" % random.randrange(16**8)}', "%j").resolve()
 
-    # create some configurations
+    # shared training configuration
+    training_conf = {
+      'output_directory' : str(top_dir),
+      'FILE_MC':'/home/badea/e+e-/aleph/data/processed/20220514/alephMCRecoAfterCutPaths_1994_ThrustReprocess.npz',
+      'FILE_DATA':'/home/badea/e+e-/aleph/data/processed/20220514/LEP1Data1994_recons_aftercut-MERGED_ThrustReprocess.npz',
+      'TrackVariation': 0, # nominal track selection
+      'EvtVariation': 0, # nominal event selection
+      'NITER': 5,
+      'NTRIAL':1,
+      'LR': 1e-3,
+      'BATCH_SIZE': 5000,
+      'EPOCHS': 500,
+      'NWARMUP': 5,
+      'NAME':'toy',
+      'NPATIENCE': 10,
+      'strapn' : 0,
+      'verbose' : args.verbose,
+      'boot' : None,
+      'poisson_weights' : True
+    }
+    
+    # list of configurations to launch
     confs = []
-    for TrackVariation in range(0, 9):
-       for EvtVariation in range(0, 2):
-            confs.append({
-              'output_directory' : str(top_dir), # Path(top_dir, f'./weights-nFilters{n_filters}-poolSize{pool_size}-checkpoints').resolve(),
-              'FILE_MC':'/home/badea/e+e-/aleph/data/processed/20220514/alephMCRecoAfterCutPaths_1994_ThrustReprocess.npz',
-              'FILE_DATA':'/home/badea/e+e-/aleph/data/processed/20220514/LEP1Data1994_recons_aftercut-MERGED_ThrustReprocess.npz',
-              'TrackVariation': TrackVariation,
-              'EvtVariation': EvtVariation,
-              'NITER': 5,
-              'NTRIAL':1,
-              'LR': 1e-3,
-              'BATCH_SIZE': 5000,
-              'EPOCHS': 500,
-              'NWARMUP': 5,
-              'NAME':'toy',
-              'NPATIENCE': 10,
-              'strapn' : args.strapn,
-              'verbose' : args.verbose,
-            })
 
-            
+    # add configurations for track and event selection systematic variations
+    if args.run_systematics:
+      for TrackVariation in range(0, 9):
+        for EvtVariation in range(0, 2):
+          temp = training_conf.copy() # copy overall
+          temp["TrackVariation"] = TrackVariation
+          temp["EvtVariation"] = EvtVariation
+          confs.append(temp)
+
+    # add configurations for bootstrap mc or data
+    if args.run_bootstrap_mc or args.run_bootstrap_data:
+      boot = "mc" if args.run_bootstrap_mc else "data"
+      nstraps = 41
+      for strapn in range(nstraps):
+        temp = training_conf.copy() # copy overall
+        temp["boot"] = boot
+        temp["strapn"] = strapn
+        temp["poisson_weights"] = False
+        confs.append(temp)
+
+    # add configurations for ensembling
+    if args.run_ensembling:
+      nensemble = 40
+      for i in range(nensemble):
+        temp = training_conf.copy()
+        confs.append(temp)
+        
     # if submitit false then just launch job
     if not query.get("submitit", False):
         for iC, conf in enumerate(confs):
