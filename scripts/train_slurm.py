@@ -167,7 +167,7 @@ if __name__ == "__main__":
           temp = training_conf.copy() # copy overall
           temp["TrackVariation"] = TrackVariation
           temp["EvtVariation"] = EvtVariation
-          temp["poisson_weights"] = True
+          temp["poisson_weights"] = False
           confs.append(temp)
 
     # add configurations for bootstrap mc or data
